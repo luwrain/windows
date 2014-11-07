@@ -1,7 +1,12 @@
+windows/LuwrainWindows/LuwrainWindows/bin
+windows/LuwrainWindows/LuwrainWindows/obj
+LuwrainWindows.sln.ide
+LuwrainWindows.v14.suo
+.gradle
+gradle
 build
 jar
 lib
 api
 *.so
 *.o
-
