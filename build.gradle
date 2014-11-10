@@ -1,0 +1,63 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+  compile fileTree (dir: 'libs', include: '*.jar')
+}
+
+jar {
+  archiveName 'luwrain-windows.jar'
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.1'
+}
+
+// Task for preparing of DLL
+task buildWindowsDLL << {
+
+  logger.lifecycle (':> Building DLL')
+
+  ProcessBuilder pb = new ProcessBuilder(['cmd', '/c', 'build.bat', ''])
+
+  logger.lifecycle (':> Starting build process')
+  Process proc = pb.start()
+  proc.waitFor()
+
+  logger.lifecycle (':> Build\'s done')
+}
+
+// Task for copy all dlls and jar dependencies to libs
+task copyBuildingResult << {
+  logger.lifecycle (':> Copy DLL')
+
+  ProcessBuilder pb = new ProcessBuilder(['cmd', '/c', 'copy.bat', ''])
+
+  logger.lifecycle (':> Starting copy process')
+  Process proc = pb.start()
+  proc.waitFor()
+
+  logger.lifecycle (':> Copy\'s done')
+}
+
+// Task for copy all dlls and jar dependencies to build/libs
+task prepare (type: Copy) {
+  def resultDir = 'build\\libs'
+
+  from (file('libs'))
+  into (file(resultDir))
+}
+
+// Task for create luwrain-windows zip file
+task buildPackage (type: Zip) {
+  def resultDir = 'build\\libs'
+
+  from (resultDir)
+  baseName 'luwrain-windows-v1.0'
+}
+
+copyBuildingResult.dependsOn 'buildWindowsDLL'
+compileJava.dependsOn 'copyBuildingResult'
+buildPackage.dependsOn 'prepare'
