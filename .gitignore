@@ -4,6 +4,7 @@ libs/jni4net.*
 libs/LuwrainWindows.*
 LuwrainWindows.sln.ide
 LuwrainWindows.v14.suo
+bridge/
 .gradle
 gradle
 build
