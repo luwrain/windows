@@ -34,6 +34,12 @@ public class SAPIImplTest
         System.out.println("result:"+SAPIImpl.speak("Прервемся",SAPIImpl.SPF_PURGEBEFORESPEAK));
 		System.out.print("sleep 1 sec ");Thread.sleep(1000);System.out.println("ok");
 
-        System.out.println("end");
+		System.out.println("Ищем Elena, количество: "+SAPIImpl.searchVoiceByAttributes("Name=Elena"));
+		System.out.println("get first voice token: "+SAPIImpl.getNextVoiceIdFromList());
+		System.out.println("select voice, result: "+SAPIImpl.selectCurrentVoice());
+		System.out.print("speak Четвертая фраза - неасинхронно, проверка xml опций, result: ");
+		System.out.println(SAPIImpl.speak("Обычно. <rate absspeed='-5'>Медленно</rate>. <pitch absmiddle='-5'>Ниже тоном</pitch>. <emph>Выделить!</emph>. <spell>По слогам</spell>.",SAPIImpl.SPF_IS_XML));
+
+		System.out.println("end");
     }
 }
