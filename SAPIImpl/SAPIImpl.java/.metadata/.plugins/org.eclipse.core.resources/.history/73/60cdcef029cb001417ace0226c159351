@@ -1,0 +1,10 @@
+package org.luwrain.windows.speech;
+
+public class SAPIImplTest
+{
+	SAPIImpl sapi;
+	public static void main(String[] args)
+	{
+        SAPIImpl.speak("Приветствую! Hi, how do you do?");
+    }
+}

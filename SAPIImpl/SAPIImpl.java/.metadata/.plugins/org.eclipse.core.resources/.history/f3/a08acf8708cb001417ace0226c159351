@@ -1,0 +1,15 @@
+/**
+ * @author Volovodov Roman
+ */
+package org.luwrain.windows.speech;
+
+class  SAPIImpl
+{
+	static
+	{
+    	System.loadLibrary("SAPIImpl."+System.getProperty("sun.arch.data.model"));
+	}
+	native public static void Say(String text);
+	
+	
+}

@@ -1,0 +1,21 @@
+/**
+ * @author Volovodov Roman
+ */
+package org.luwrain.windows.speech;
+
+class  SAPIImpl
+{
+	static
+	{
+		// загружаем динамическу библиотеку под текущую архитектуру (32 или 64 бита)
+    	System.loadLibrary("SAPIImpl."+System.getProperty("sun.arch.data.model"));
+	}
+	/**
+	 * ќтсылает текстовую строку дл€ синтеза речи с помощью SAPI, текущий голосовой токен уже должен быть выбран 
+	 * @param text	—одержит сообщение, которое необходимо синтезировать
+	 */
+	native public static int say(String text);
+	native public static int init();
+	
+	
+}

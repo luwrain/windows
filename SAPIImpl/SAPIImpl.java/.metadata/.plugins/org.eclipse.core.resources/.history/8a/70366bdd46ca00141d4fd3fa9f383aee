@@ -1,0 +1,13 @@
+/**
+ * @author Volovodov Roman
+ */
+package org.luwrain.windows.speech;
+
+class  SAPIImpl
+{
+	static
+	{
+    	System.loadLibrary("SAPIImpl");
+	}
+	
+}

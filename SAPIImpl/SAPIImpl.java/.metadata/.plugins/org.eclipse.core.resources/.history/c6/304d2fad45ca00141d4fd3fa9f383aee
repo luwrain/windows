@@ -1,0 +1,11 @@
+package org.luwrain.windows.speech;
+
+import java.lang.System.out;
+
+public class SAPIImplTest
+{
+	public static void main(String[] args)
+	{
+        out.println("Hello World!");
+    }
+}

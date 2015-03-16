@@ -1,0 +1,11 @@
+package org.luwrain.windows.speech;
+
+public class SAPIImplTest
+{
+	SAPIImpl sapi;
+	public static void main(String[] args)
+	{
+		System.out.print(System.getProperty("sun.arch.data.model"));
+        SAPIImpl.Say("test");
+    }
+}
