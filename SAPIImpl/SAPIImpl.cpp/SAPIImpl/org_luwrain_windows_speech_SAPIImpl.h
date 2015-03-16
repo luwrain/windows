@@ -7,6 +7,22 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#undef org_luwrain_windows_speech_SAPIImpl_SPF_IS_XML
+#define org_luwrain_windows_speech_SAPIImpl_SPF_IS_XML 8L
+#undef org_luwrain_windows_speech_SAPIImpl_SPF_IS_NOT_XML
+#define org_luwrain_windows_speech_SAPIImpl_SPF_IS_NOT_XML 16L
+#undef org_luwrain_windows_speech_SAPIImpl_SPF_ASYNC
+#define org_luwrain_windows_speech_SAPIImpl_SPF_ASYNC 1L
+#undef org_luwrain_windows_speech_SAPIImpl_SPF_PURGEBEFORESPEAK
+#define org_luwrain_windows_speech_SAPIImpl_SPF_PURGEBEFORESPEAK 2L
+#undef org_luwrain_windows_speech_SAPIImpl_SPF_IS_FILENAME
+#define org_luwrain_windows_speech_SAPIImpl_SPF_IS_FILENAME 4L
+#undef org_luwrain_windows_speech_SAPIImpl_SPF_NLP_SPEAK_PUNC
+#define org_luwrain_windows_speech_SAPIImpl_SPF_NLP_SPEAK_PUNC 64L
+#undef org_luwrain_windows_speech_SAPIImpl_SPF_PARSE_SAPI
+#define org_luwrain_windows_speech_SAPIImpl_SPF_PARSE_SAPI 128L
+#undef org_luwrain_windows_speech_SAPIImpl_SPF_PARSE_SSML
+#define org_luwrain_windows_speech_SAPIImpl_SPF_PARSE_SSML 256L
 /*
  * Class:     org_luwrain_windows_speech_SAPIImpl
  * Method:    getNextVoiceIdFromList
@@ -42,10 +58,10 @@ JNIEXPORT jint JNICALL Java_org_luwrain_windows_speech_SAPIImpl_searchVoiceByAtt
 /*
  * Class:     org_luwrain_windows_speech_SAPIImpl
  * Method:    speak
- * Signature: (Ljava/lang/String;)I
+ * Signature: (Ljava/lang/String;I)I
  */
 JNIEXPORT jint JNICALL Java_org_luwrain_windows_speech_SAPIImpl_speak
-  (JNIEnv *, jclass, jstring);
+  (JNIEnv *, jclass, jstring, jint);
 
 #ifdef __cplusplus
 }
