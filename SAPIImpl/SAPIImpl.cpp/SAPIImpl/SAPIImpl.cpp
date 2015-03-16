@@ -35,6 +35,7 @@ public:
 	}
 	jint searchVoiceToken(jchar* cond)
 	{
+		cpIEnum.Release();
 //		MessageBox(NULL,(LPWSTR)cond,L"debug",MB_OK);
 		hr = SpEnumTokens(SPCAT_VOICES, (WCHAR*)cond, NULL, &cpIEnum);
 		if (hr != S_OK) return -1; // если ошибка, вернем количество - 0 todo: добавить обработку ошибок
@@ -50,18 +51,18 @@ public:
 		if (cpToken != NULL) { cpToken.Release(); cpToken = NULL; }
 		// выбираем токен по id
 		hr = SpGetTokenFromId((WCHAR*)id,&cpToken);
-		if (hr != S_OK) return false;
+		if (hr != S_OK) return 1;
 		// устанавливаем его как текущий голос
 		hr = cpVoice->SetVoice(cpToken);
-		if (hr != S_OK) return false;
-		return true;
+		if (hr != S_OK) return 2;
+		return 0;
 	}
 	jint selectCurrentVoice()
 	{
 		// устанавливаем текущий голос
 		hr = cpVoice->SetVoice(cpToken);
-		if (hr != S_OK) return false;
-		return true;
+		if (hr != S_OK) return 1;
+		return 0;
 	}
 	void setIdStringFromVoiceListNext(LPWSTR* id)
 	{
@@ -74,11 +75,11 @@ public:
 		hr = cpToken->GetId(id);
 
 	}
-	jint speak(jchar* text)
+	jint speak(jchar* text, jint flags)
 	{
-		hr = cpVoice->Speak((LPWSTR)text, 0, NULL);
-		if (hr != S_OK) return false;
-		return true;
+		hr = cpVoice->Speak((LPWSTR)text, flags, NULL);
+		if (hr != S_OK) return 1;
+		return 0;
 	}
 
 };
@@ -131,7 +132,7 @@ JNIEXPORT jint JNICALL Java_org_luwrain_windows_speech_SAPIImpl_searchVoiceByAtt
 	// запрос на токены по критериям
 	return impl.searchVoiceToken(text);
 }
-JNIEXPORT jint JNICALL Java_org_luwrain_windows_speech_SAPIImpl_speak(JNIEnv * jni, jclass jthis, jstring jtext)
+JNIEXPORT jint JNICALL Java_org_luwrain_windows_speech_SAPIImpl_speak(JNIEnv * jni, jclass jthis, jstring jtext, jint flags)
 {
 	impl.init();
 	// выгружаем строку с условием
@@ -141,5 +142,5 @@ JNIEXPORT jint JNICALL Java_org_luwrain_windows_speech_SAPIImpl_speak(JNIEnv * j
 	jni->GetStringRegion(jtext, 0, length, text);
 	text[length] = L'\x0';
 	// говорим
-	return impl.speak(text);
+	return impl.speak(text, flags);
 }

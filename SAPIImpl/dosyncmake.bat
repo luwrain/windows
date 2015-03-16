@@ -6,6 +6,9 @@ rem 2. rebuild cpp project both arch - x86 and x64
 rem 3. rebuild java classes
 rem 4. call this bat (must have no errors)
 
+rem make java class for cpp constants
+if exist SAPIImpl.cpp\Debug\ExportConstants.exe SAPIImpl.cpp\Debug\ExportConstants.exe > SAPIImpl.java\SAPIImplTest\src\org\luwrain\windows\speech\SAPIImpl_constants.java
+
 rem make cpp header for javajni class
 cd SAPIImpl.java\SAPIImplTest\bin
 "C:\Program Files\Java\jdk1.7.0_67\bin\javah.exe" org.luwrain.windows.speech.SAPIImpl
@@ -21,3 +24,4 @@ rem make jar from compiled java classes
 cd ..\SAPIImpl.java\SAPIImplTest\bin
 "C:\Program Files\Java\jdk1.7.0_67\bin\jar.exe" cfe ..\..\..\exec\SAPIImplTest.jar org.luwrain.windows.speech.SAPIImplTest .
 
+cd ..\..\..
