@@ -5,12 +5,34 @@ import org.luwrain.speech.BackEnd;
 
 public class SAPI implements BackEnd
 {
+    private static final String SAPI_ENGINE_PREFIX = "--sapi-engine=";
+
     private int defaultPitch = 50;
     private int defaultRate = 50;
 
+    private String getAttrs(String[] cmdLine)
+    {
+	if (cmdLine == null)
+	    return null;
+	for(String s: cmdLine)
+	{
+	    if (s == null)
+		continue;
+	    if (s.startsWith(SAPI_ENGINE_PREFIX))
+		return s.substring(SAPI_ENGINE_PREFIX.length());
+	}
+	return null;
+    }
+
     @Override public String init(String[] cmdLine)
     {
-	SAPIImpl.selectCurrentVoice();
+	final String attrs = getAttrs(cmdLine);
+	if (attrs == null || attrs.trim().isEmpty())
+	    System.out.println("Initializing SAPI with default parameters"); else
+	    System.out.println("Initializing SAPI with the following arguments: " + attrs);
+	SAPIImpl.searchVoiceByAttributes(attrs);
+	System.out.println("getNextVoiceIdFromList()=" + SAPIImpl.getNextVoiceIdFromList());
+	System.out.println("selectCurrentVoice()=" + SAPIImpl.selectCurrentVoice());
 	return null;
     }
 
@@ -51,6 +73,7 @@ public class SAPI implements BackEnd
 
     public void silence()
     {
+	SAPIImpl.speak("", SAPIImpl.SPF_PURGEBEFORESPEAK);
     }
 
     @Override public void setDefaultPitch(int value)
