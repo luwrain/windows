@@ -71,9 +71,11 @@ public class SAPI implements BackEnd
 				    int pitch,
 				    int rate)
     {
+	String s = "";
 	if (Character.isUpperCase(letter))
-	    SAPIImpl.speak(encodeXml("" + letter, (pitch + 100) / 2, rate)); else
-	    SAPIImpl.speak(encodeXml("" + letter, pitch, rate));
+s = encodeXml("" + letter, (pitch + 100) / 2, rate); else
+s = encodeXml("" + letter, pitch, rate);
+	    SAPIImpl.speak("<spell>" + s + "</spell>");
     }
 
     public void silence()
@@ -93,11 +95,69 @@ public class SAPI implements BackEnd
 
     private static String encodeXml(String text, int pitch, int rate)
     {
-	String s = text.replaceAll("&", "&amp;");
-	s = s.replaceAll("<", "&lt;");
-	s = s.replaceAll(">", "&gt;");
-	s = s.replaceAll("\"", "&quot;");
-	s = "<spell>" + s + "</spell>";
+	String s = "";
+	for(int i = 0;i < text.length();++i)
+	{
+	    final char c = text.charAt(i);
+	    if (Character.isLetter(c) || Character.isSpace(c))
+	    {
+		s += c;
+		continue;
+	    }
+	    switch(c)
+	    {
+	    case '&':
+		s += "<spell>&amp;</spell>";
+		break;
+	    case '<':
+		s += "<spell>&lt;</spell>";
+		break;
+	    case '>':
+		s += "<spell>&gt;</spell>";
+		break;
+	    case '\"':
+		s += "<spell>&quot;</spell>";
+		break;
+	    default:
+		s += "<spell>" + c + "</spell>";
+	    }
+	}
+	final int r = (rate / 5) - 10;
+	final int p = (pitch / 5) - 10;
+	s = "<rate absspeed=\"" + r + "\"/>" + s;
+	s = "<pitch absmiddle=\"" + p + "\"/>" + s;
+	return s;
+    }
+
+    private static String encodeXmlNoSpell(String text, int pitch, int rate)
+    {
+	String s = "";
+	for(int i = 0;i < text.length();++i)
+	{
+	    final char c = text.charAt(i);
+	    if (Character.isLetter(c) || Character.isSpace(c))
+	    {
+		s += c;
+		continue;
+	    }
+	    switch(c)
+	    {
+	    case '&':
+		s += "&amp;";
+		break;
+	    case '<':
+		s += "&lt;";
+		break;
+	    case '>':
+		s += "&gt;";
+		break;
+	    case '\"':
+		s += "&quot;";
+		break;
+	    default:
+		s += c;
+	    }
+	}
 	final int r = (rate / 5) - 10;
 	final int p = (pitch / 5) - 10;
 	s = "<rate absspeed=\"" + r + "\"/>" + s;
