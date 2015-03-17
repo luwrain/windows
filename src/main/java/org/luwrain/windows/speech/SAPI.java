@@ -42,33 +42,38 @@ public class SAPI implements BackEnd
 
     @Override public void say(String text)
     {
-	SAPIImpl.speak(text);
+	say(text, defaultPitch, defaultRate);
     }
 
     @Override public void say(String text, int pitch)
     {
-	SAPIImpl.speak(text);
+	say(text, pitch, defaultRate);
     }
 
     @Override public void say(String text,
 			      int pitch,
 			      int rate)
     {
-	SAPIImpl.speak(text);
+	SAPIImpl.speak(encodeXml(text, pitch, rate));
     }
 
     @Override public void sayLetter(char letter)
     {
+	sayLetter(letter, defaultPitch, defaultRate);
     }
 
     @Override public void sayLetter(char letter, int pitch)
     {
+	sayLetter(letter, pitch, defaultRate);
     }
 
     @Override public void sayLetter(char letter,
 				    int pitch,
 				    int rate)
     {
+	if (Character.isUpperCase(letter))
+	    SAPIImpl.speak(encodeXml("" + letter, (pitch + 100) / 2, rate)); else
+	    SAPIImpl.speak(encodeXml("" + letter, pitch, rate));
     }
 
     public void silence()
@@ -84,5 +89,19 @@ public class SAPI implements BackEnd
     @Override public void setDefaultRate(int value)
     {
 	defaultRate = value;
+    }
+
+    private static String encodeXml(String text, int pitch, int rate)
+    {
+	String s = text.replaceAll("&", "&amp;");
+	s = s.replaceAll("<", "&lt;");
+	s = s.replaceAll(">", "&gt;");
+	s = s.replaceAll("\"", "&quot;");
+	s = "<spell>" + s + "</spell>";
+	final int r = (rate / 5) - 10;
+	final int p = (pitch / 5) - 10;
+	s = "<rate absspeed=\"" + r + "\"/>" + s;
+	s = "<pitch absmiddle=\"" + p + "\"/>" + s;
+	return s;
     }
 }
