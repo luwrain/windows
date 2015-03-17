@@ -30,8 +30,8 @@ public class SAPIImplTest
 		System.out.print("выбираем по идентификатору Aleksandr, result:");
 		System.out.println(SAPIImpl.selectVoiceById("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\TokenEnums\\RHVoice\\Aleksandr"));
 
-        System.out.println("speak Третяя фраза. Не асинхронно, с очисткой очереди и остановкой предыдущих текстов");
-        System.out.println("result:"+SAPIImpl.speak("Прервемся",SAPIImpl.SPF_PURGEBEFORESPEAK));
+		System.out.println("speak Третяя фраза. Не асинхронно, с очисткой очереди и остановкой предыдущих текстов");
+		System.out.println("result:"+SAPIImpl.speak("Прервемся",SAPIImpl.SPF_PURGEBEFORESPEAK));
 		System.out.print("sleep 1 sec ");Thread.sleep(1000);System.out.println("ok");
 
 		System.out.println("Ищем Elena, количество: "+SAPIImpl.searchVoiceByAttributes("Name=Elena"));
@@ -41,5 +41,5 @@ public class SAPIImplTest
 		System.out.println(SAPIImpl.speak("Обычно. <rate absspeed='-5'>Медленно</rate>. <pitch absmiddle='-5'>Ниже тоном</pitch>. <emph>Выделить!</emph>. <spell>По слогам</spell>.",SAPIImpl.SPF_IS_XML));
 
 		System.out.println("end");
-    }
+	}
 }
