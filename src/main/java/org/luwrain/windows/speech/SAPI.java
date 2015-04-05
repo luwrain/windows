@@ -75,7 +75,8 @@ public class SAPI implements BackEnd
 	if (Character.isUpperCase(letter))
 s = encodeXml("" + letter, 100, rate); else
 s = encodeXml("" + letter, pitch, rate);
-	    SAPIImpl.speak("<spell>" + s + "</spell>");
+	//	    SAPIImpl.speak("<spell>" + s + "</spell>");
+	    SAPIImpl.speak(s);
     }
 
     public void silence()
