@@ -4,6 +4,7 @@ package org.luwrain.windows;
 import java.io.File;
 
 import org.luwrain.os.Location;
+import org.luwrain.hardware.Hardware;
 
 public class Windows implements org.luwrain.os.OperatingSystem
 {
@@ -22,5 +23,10 @@ public class Windows implements org.luwrain.os.OperatingSystem
 	if (relativeTo == null || relativeTo.getAbsolutePath().length() < 3)
 	    return new File("C:\\");
 	return new File(relativeTo.getAbsolutePath().substring(0, 3));
+    }
+
+    @Override public Hardware getHardware()
+    {
+	return null;
     }
 }
