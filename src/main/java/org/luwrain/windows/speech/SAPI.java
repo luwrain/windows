@@ -10,6 +10,8 @@ public class SAPI implements BackEnd
     private int defaultPitch = 50;
     private int defaultRate = 50;
 
+    SAPIImpl impl=new SAPIImpl();
+    
     private String getAttrs(String[] cmdLine)
     {
 	if (cmdLine == null)
@@ -30,9 +32,9 @@ public class SAPI implements BackEnd
 	if (attrs == null || attrs.trim().isEmpty())
 	    System.out.println("Initializing SAPI with default parameters"); else
 	    System.out.println("Initializing SAPI with the following arguments: " + attrs);
-	SAPIImpl.searchVoiceByAttributes(attrs);
-	System.out.println("getNextVoiceIdFromList()=" + SAPIImpl.getNextVoiceIdFromList());
-	System.out.println("selectCurrentVoice()=" + SAPIImpl.selectCurrentVoice());
+	impl.searchVoiceByAttributes(attrs);
+	System.out.println("getNextVoiceIdFromList()=" + impl.getNextVoiceIdFromList());
+	System.out.println("selectCurrentVoice()=" + impl.selectCurrentVoice());
 	return null;
     }
 
@@ -54,7 +56,7 @@ public class SAPI implements BackEnd
 			      int pitch,
 			      int rate)
     {
-	SAPIImpl.speak(encodeXml(text, pitch, rate));
+    	impl.speak(encodeXml(text, pitch, rate));
     }
 
     @Override public void sayLetter(char letter)
@@ -76,12 +78,12 @@ public class SAPI implements BackEnd
 s = encodeXml("" + letter, 100, rate); else
 s = encodeXml("" + letter, pitch, rate);
 	//	    SAPIImpl.speak("<spell>" + s + "</spell>");
-	    SAPIImpl.speak(s);
+	impl.speak(s);
     }
 
     public void silence()
     {
-	SAPIImpl.speak("", SAPIImpl.SPF_PURGEBEFORESPEAK);
+    	impl.speak("", SAPIImpl.SPF_PURGEBEFORESPEAK);
     }
 
     @Override public void setDefaultPitch(int value)
