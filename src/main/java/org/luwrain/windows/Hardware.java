@@ -22,6 +22,10 @@ import org.luwrain.hardware.*;
 
 class Hardware implements org.luwrain.hardware.Hardware
 {
+    @Override public AudioMixer getAudioMixer()
+    {
+	return null;
+    }
     @Override public Partition[] getMountedPartitions()
     {
 	return MountedPartitions.getMountedPartitions();

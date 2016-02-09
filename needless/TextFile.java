@@ -18,7 +18,7 @@
 package org.luwrain.windows.speech;
 
 import java.io.*;
-import org.luwrain.speech.BackEnd;
+//import org.luwrain.speech.BackEnd;
 
 public class TextFile implements BackEnd
 {

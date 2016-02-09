@@ -88,7 +88,8 @@ public class SAPIChannel implements Channel
     	}
     	catch (Exception e)
     	{
-    	    Log.error("windows", "unexpected error while initializing a command speech channel:" + e.getMessage());
+    	    Log.error
+("windows", "unexpected error while initializing a command speech channel:" + e.getMessage());
     	    e.printStackTrace();
     	    return false;
     	}
@@ -119,12 +120,14 @@ public class SAPIChannel implements Channel
 		return false;
 	}
 
+    /*
 	@Override public void setDefaultVoice(String name)
 	{
 		impl.searchVoiceByAttributes(name);
 		System.out.println("getNextVoiceIdFromList()=" + impl.getNextVoiceIdFromList());
 		System.out.println("selectCurrentVoice()=" + impl.selectCurrentVoice());
 	}
+    */
 
 	int limit100(int value)
 	{
@@ -143,12 +146,12 @@ public class SAPIChannel implements Channel
 		impl.rate(Math.round((limit100(value)/5)-10));
 	}
 
-	@Override public void speak(String text)
+    public void speak(String text)
 	{
 		impl.speak(text,SAPIImpl_constants.SPF_ASYNC|SAPIImpl_constants.SPF_IS_NOT_XML);
 	}
 
-	@Override public void speak(String text,int relPitch,int relRate)
+    public void speak(String text,int relPitch,int relRate)
 	{
 		impl.pitch(limit100(curPitch+relPitch));
 		impl.rate(limit100(curPitch+relRate));
@@ -157,10 +160,17 @@ public class SAPIChannel implements Channel
 		impl.rate(curRate);
 	}
 
-	@Override public void speak(String text,Listener listener,int relPitch,int relRate)
+	@Override public long speak(String text,Listener listener,int relPitch,int relRate)
 	{
 		// FIXME: make speach with listener
+	    return -1;
 	}
+
+	@Override public long speakLetter(char letter,Listener listener,int relPitch,int relRate)
+	{
+	    return -1;
+	}
+
 
 	int chooseSAPIAudioFormatFlag(AudioFormat format)
 	{
@@ -259,14 +269,53 @@ public class SAPIChannel implements Channel
 		return true;
 	}
 
+    /*
 	@Override public void speak(String text,OutputStream stream,int relPitch,int relRate)
 	{
 		// FIXME:
 	}
+    */
 
 	@Override public void silence()
 	{
     	impl.speak("", SAPIImpl.SPF_PURGEBEFORESPEAK);
 	}
+
+    @Override public AudioFormat[] getSynthSupportedFormats()
+    {
+	return null;
+    }
+
+    @Override public void setCurrentPuncMode(PuncMode mode)
+    {
+    }
+
+    @Override public PuncMode getCurrentPuncMode()
+    {
+	return null;
+    }
+
+    @Override public int getDefaultRate()
+    {
+	return 0;
+    }
+
+    @Override public int getDefaultPitch()
+    {
+	return 0;
+    }
+
+    @Override public void setCurrentVoice(String name)
+    {
+    }
+
+    @Override public String getCurrentVoiceName()
+    {
+	return "default";
+    }
+
+    @Override public void close()
+    {
+    }
 
 }

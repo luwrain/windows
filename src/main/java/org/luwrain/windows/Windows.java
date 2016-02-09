@@ -37,12 +37,19 @@ public class Windows implements org.luwrain.os.OperatingSystem
 	String getType();
     };
 
+    @Override public String init(String dataDir)
+    {
+	return null;
+    }
+
     private final Hardware hardware = new Hardware();
 
+    /*
     @Override public String init()
     {
 	return null;
     }
+    */
 
     @Override public org.luwrain.hardware.Hardware getHardware()
     {
