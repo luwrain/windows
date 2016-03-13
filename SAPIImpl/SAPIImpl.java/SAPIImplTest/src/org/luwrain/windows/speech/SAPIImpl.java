@@ -1,4 +1,20 @@
-/* @author Volovodov Roman */
+/*
+   Copyright 2015-2016 Roman Volovodov <gr.rPman@gmail.com>
+   Copyright 2012-2016 Michael Pozhidaev <michael.pozhidaev@gmail.com>
+
+   This file is part of the LUWRAIN.
+
+   LUWRAIN is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public
+   License as published by the Free Software Foundation; either
+   version 3 of the License, or (at your option) any later version.
+
+   LUWRAIN is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   General Public License for more details.
+*/
+
 package org.luwrain.windows.speech;
 
 /**
@@ -49,6 +65,11 @@ class SAPIImpl extends SAPIImpl_constants
 	 */
 	native public String getNextVoiceIdFromList();
 	/**
+	 * Возвращает строку описанием голосового токена, идентификатор которого в последний раз был получен методом getNextVoiceIdFromList()  
+	 * @return строка с описанием голосового токена (обычно это наименование)
+	 */
+	native public String getLastVoiceDescription();
+	/**
 	 * Переходит к следующему голосовому движку и возвращает его идентификатор
 	 * Метод необходимо вызвать как минимум для получения первого движка из списка результатов поиска searchVoiceByAttributes  
 	 * @return null - если больше нет голосовых токенов или строковый идентификатор движка	
@@ -66,6 +87,7 @@ class SAPIImpl extends SAPIImpl_constants
 	 * Выбор голосового токена по критерию с помощью атрибутов. Наименование атрибутов и их значения определяются голосовыми движками.
 	 * В результате метода сбрасывается текущее перечисление списка голосовых движков и устанавливается новое, в соответствии с заданным критерием
 	 * @param cond	Список значений атрибутов, например Name=Alena, Language=409, Gender=male и т.п., разделенные ';', возможно пустое значение null - отсутствие фильтров
+	 * подробности можно узнать тут https://msdn.microsoft.com/en-us/library/ms717036%28v=vs.85%29.aspx
 	 * @return	@return	количество голосов, удовлетворяющих условию или -1 - если ошибка
 	 */
 	native public int searchVoiceByAttributes(String cond);

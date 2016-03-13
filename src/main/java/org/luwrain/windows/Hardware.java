@@ -17,7 +17,6 @@
 
 package org.luwrain.windows;
 
-import java.io.*;
 import org.luwrain.hardware.*;
 
 class Hardware implements org.luwrain.hardware.Hardware
@@ -29,13 +28,6 @@ class Hardware implements org.luwrain.hardware.Hardware
     @Override public Partition[] getMountedPartitions()
     {
 	return MountedPartitions.getMountedPartitions();
-    }
-
-    @Override public File getRoot(File relativeTo)
-    {
-	if (relativeTo == null || relativeTo.getAbsolutePath().length() < 3)
-	    return new File("C:\\");
-	return new File(relativeTo.getAbsolutePath().substring(0, 3));
     }
 
     @Override public int mountAllPartitions(StorageDevice device)
@@ -57,5 +49,11 @@ class Hardware implements org.luwrain.hardware.Hardware
     {
 	return new SysDevice[0];
     }
+    
+	@Override public Battery[] getBatteries()
+	{
+	// TODO: Battery implementation
+	return null;
+	}
 
 }

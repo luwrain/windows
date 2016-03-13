@@ -28,6 +28,8 @@ public:
 	CSpStreamFormat cAudioFmt;
 	CComPtr<ISpStream> cpStream = NULL;
 
+	LPWSTR lastVoiceToketDescription = NULL;
+
 	void init()
 	{
 		if (skipInit) return;
@@ -93,6 +95,8 @@ public:
 		if (hr != S_OK) return;
 		// получаем идентификатор токена (тут выделяется память под струку)
 		hr = cpToken->GetId(id);
+		// получаем описание токена (наименование голоса)
+		SpGetDescription(cpToken, &lastVoiceToketDescription, NULL);
 
 	}
 	jint speak(jchar* text, jint flags)
@@ -172,6 +176,13 @@ void release_impl(JNIEnv * jni,jobject &jthis)
 	sList.erase(it);
 }
 
+JNIEXPORT jstring JNICALL Java_org_luwrain_windows_speech_SAPIImpl_getLastVoiceDescription(JNIEnv * jni, jobject jthis)
+{
+	SAPIImpl& impl = make_impl(jni, jthis);
+	if (impl.lastVoiceToketDescription == NULL) return NULL;
+	// формируем строку для возврата в java
+	return jni->NewString((jchar*)impl.lastVoiceToketDescription, (jsize)wcslen(impl.lastVoiceToketDescription));
+}
 JNIEXPORT jstring JNICALL Java_org_luwrain_windows_speech_SAPIImpl_getNextVoiceIdFromList(JNIEnv * jni, jobject jthis)
 {
 	SAPIImpl& impl = make_impl(jni,jthis);

@@ -177,6 +177,14 @@ JNIEXPORT jstring JNICALL Java_org_luwrain_windows_speech_SAPIImpl_getNextVoiceI
 
 /*
  * Class:     org_luwrain_windows_speech_SAPIImpl
+ * Method:    getLastVoiceDescription
+ * Signature: ()Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_org_luwrain_windows_speech_SAPIImpl_getLastVoiceDescription
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     org_luwrain_windows_speech_SAPIImpl
  * Method:    selectCurrentVoice
  * Signature: ()I
  */

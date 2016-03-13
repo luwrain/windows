@@ -20,7 +20,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.OutputStream;
+import java.util.EnumSet;
 import java.util.Set;
 import java.util.Vector;
 
@@ -31,25 +33,24 @@ import org.luwrain.core.Registry;
 import org.luwrain.core.RegistryProxy;
 import org.luwrain.speech.Channel;
 import org.luwrain.speech.Voice;
+import org.luwrain.speech.Channel.Features;
 
 public class SAPIChannel implements Channel
 {
     private static final String SAPI_ENGINE_PREFIX = "--sapi-engine=";
     private static final int COPY_WAV_BUF_SIZE=1024;
 
-    private String name;
-    private String command;
-    
-    // FIXME: get default values from SAPI
     private int curPitch=100;
     private int curRate=50;
+
+    private String name = "";
     
     File tempFile;
 
     private interface RegOptions
     {
-	String getName();
-	String getCommand();
+	String getName(String defValue);
+	String getCond();
     }
     
     SAPIImpl impl=new SAPIImpl();
@@ -68,40 +69,62 @@ public class SAPIChannel implements Channel
 	return null;
     }
 
-    @Override public boolean init(String[] cmdLine,Registry registry,String path)
-	{
+    @Override public boolean initByRegistry(Registry registry, String path)
+    {
+    	String cond;
     	try {
     	    final RegOptions options = RegistryProxy.create(registry, path, RegOptions.class);
-    	    name = options.getName();
-    	    command = options.getCommand();//FIXME:With default value
-
-    	    final String attrs = getAttrs(cmdLine);
-    		if (attrs == null || attrs.trim().isEmpty())
-    		    System.out.println("Initializing SAPI with default parameters"); else
-    		    System.out.println("Initializing SAPI with the following arguments: " + attrs);
-    		impl.searchVoiceByAttributes(attrs);
-    		System.out.println("getNextVoiceIdFromList()=" + impl.getNextVoiceIdFromList());
-    		System.out.println("selectCurrentVoice()=" + impl.selectCurrentVoice());
-
-        	tempFile=File.createTempFile(name,"tmpwav");
-    		return true;
+    	    name = options.getName(name);
+    	    cond = options.getCond();
     	}
     	catch (Exception e)
     	{
-    	    Log.error
-("windows", "unexpected error while initializing a command speech channel:" + e.getMessage());
+    	    Log.error("windows", "unexpected error while initializing a command speech channel:" + e.getMessage());
     	    e.printStackTrace();
     	    return false;
     	}
-	}
-
+    	boolean res=initByArgs(new String[]{cond});
+    	return res;
+    }
+    @Override public boolean initByArgs(String[] args)
+    {
+    	int cnt=impl.searchVoiceByAttributes(args==null?null:String.join(";",args));
+		if(cnt==0)
+		{
+			System.out.println("Have no voice with specified attributes");
+			return false;
+		} else
+		if(cnt==-1)
+		{
+			System.out.println("Error ocupied while search voice");
+			return false;
+		}
+    	String voiceId=impl.getNextVoiceIdFromList();
+		int res=impl.selectCurrentVoice();
+		if(res!=0)
+		{
+			System.out.println("Error ocupied while select voice");
+			return false;
+		}
+		// FIXME: only for wav gen 
+    	try
+		{
+			tempFile=File.createTempFile(name,"tmpwav");
+		} catch(IOException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+    }
+    
 	@Override public Voice[] getVoices()
 	{
 		impl.searchVoiceByAttributes(null);
 		Vector<Voice> voices=new Vector<Voice>(); 
 		String id;
 		while((id=impl.getNextVoiceIdFromList())!=null)
-			voices.add(new SAPIVoice(id,null,false)); // FIXME: get voice name and male flag from SAPI
+			voices.add(new SAPIVoice(id,impl.getLastVoiceDescription(),false)); // FIXME: get male flag from SAPI if it possible
 		return voices.toArray(new Voice[voices.size()]);
 	}
 
@@ -112,7 +135,7 @@ public class SAPIChannel implements Channel
 
 	@Override public Set<Features> getFeatures()
 	{
-		return null;
+	    return EnumSet.of(Features.CAN_SYNTH_TO_STREAM, Features.CAN_SYNTH_TO_SPEAKERS); // Features.CAN_NOTIFY_WHEN_FINISHED
 	}
 
 	@Override public boolean isDefault()
@@ -162,7 +185,11 @@ public class SAPIChannel implements Channel
 
 	@Override public long speak(String text,Listener listener,int relPitch,int relRate)
 	{
-		// FIXME: make speach with listener
+		impl.pitch(limit100(curPitch+relPitch));
+		impl.rate(limit100(curPitch+relRate));
+		impl.speak(text,SAPIImpl_constants.SPF_ASYNC|SAPIImpl_constants.SPF_IS_NOT_XML);
+		impl.pitch(curPitch);
+		impl.rate(curRate);
 	    return -1;
 	}
 

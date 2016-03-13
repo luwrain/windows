@@ -10,6 +10,10 @@ public class SAPIImplTest
 		impl.getNextVoiceIdFromList();
 		impl.selectCurrentVoice();
 
+		String id;
+		System.out.println(impl.searchVoiceByAttributes(null));
+		while((id=impl.getNextVoiceIdFromList())!=null) System.out.println(id+" - "+impl.getLastVoiceDescription());
+
 		impl.speak("Привет, это работает! Hi, it's work!",SAPIImpl_constants.SPF_ASYNC);
 
 		SAPIImpl impl2=new SAPIImpl();

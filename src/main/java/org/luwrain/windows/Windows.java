@@ -20,43 +20,37 @@ package org.luwrain.windows;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 
 import org.luwrain.core.Log;
 import org.luwrain.core.NullCheck;
 import org.luwrain.core.Registry;
 import org.luwrain.core.RegistryProxy;
-import org.luwrain.os.Keyboard;
 import org.luwrain.os.KeyboardHandler;
 import org.luwrain.speech.Channel;
 import org.luwrain.windows.speech.SAPIChannel;
+import org.luwrain.os.OperatingSystem;
 
-public class Windows implements org.luwrain.os.OperatingSystem
+public class Windows implements OperatingSystem
 {
     interface ChannelBasicData
     {
 	String getType();
     };
 
-    @Override public String init(String dataDir)
+    @Override public boolean init(String dataDir)
     {
-	return null;
+    	return true;
     }
 
     private final Hardware hardware = new Hardware();
-
-    /*
-    @Override public String init()
-    {
-	return null;
-    }
-    */
 
     @Override public org.luwrain.hardware.Hardware getHardware()
     {
 	return hardware;
     }
 
-	@Override public void openFileInDesktop(File file)
+	@Override public void openFileInDesktop(Path path)
 	{
 		if(!Desktop.isDesktopSupported())
 		{
@@ -69,7 +63,7 @@ public class Windows implements org.luwrain.os.OperatingSystem
 		}
 		try
 		{
-			desktop.open(file);
+			desktop.open(path.toFile());
 		}
 		catch(Exception e)
 		{
@@ -78,22 +72,17 @@ public class Windows implements org.luwrain.os.OperatingSystem
 		}
 	}
 
-	@Override public Channel loadSpeechChannel(String[] cmdLine,Registry registry,String path)
+	@Override public Channel loadSpeechChannel(String type)
 	{
-		try {
-		    final ChannelBasicData data = RegistryProxy.create(registry, path, ChannelBasicData.class);
-		    switch(data.getType())
-		    {
-		    case "command":
-			return new SAPIChannel();
-		    default:
-			return null;
-		    }
-		}
-		catch (Exception e)
+		NullCheck.notNull(type, "type");
+		switch(type)
 		{
-		    Log.error("linux", "unexpected exception while loading speech channel from " + path);
-		    e.printStackTrace();
+		case "command":
+		    return new SAPIChannel();
+		//case "voiceman":
+		    //return new VoiceMan();
+		default:
+		    Log.error("linux", "unknown speech channel type:" + type);
 		    return null;
 		}
 	}
@@ -108,6 +97,21 @@ public class Windows implements org.luwrain.os.OperatingSystem
 		default:
 		    return null;
 		}
+	}
+
+	@Override public boolean shutdown()
+	{
+		return false;
+	}
+
+	@Override public boolean reboot()
+	{
+		return false;
+	}
+
+	@Override public boolean suspend(boolean hibernate)
+	{
+		return false;
 	}
 
 }
