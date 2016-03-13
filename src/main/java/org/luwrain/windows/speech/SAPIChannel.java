@@ -195,7 +195,7 @@ public class SAPIChannel implements Channel
 
 	@Override public long speakLetter(char letter,Listener listener,int relPitch,int relRate)
 	{
-	    return -1;
+		return speak(""+letter,listener,relPitch,relRate);
 	}
 
 
