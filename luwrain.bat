@@ -1,1 +1,24 @@
-java -cp C:\luwrain\jar\luwrain.jar;C:\luwrain\jar\luwrain-app-commander.jar;C:\luwrain\jar\luwrain-app-fetch.jar;C:\luwrain\jar\luwrain-app-news.jar;C:\luwrain\jar\luwrain-app-notepad.jar;C:\luwrain\jar\luwrain-app-reader.jar;C:\luwrain\jar\luwrain-app-twitter.jar;C:\luwrain\jar\luwrain-base.jar;C:\luwrain\jar\luwrain-lang-en.jar;C:\luwrain\jar\luwrain-pim.jar;C:\luwrain\jar\luwrain-windows.jar;C:\luwrain\lib\hsqldb.jar;C:\luwrain\lib\jdom.jar;C:\luwrain\lib\poi-3.11-20141221.jar;C:\luwrain\lib\poi-excelant-3.11-20141221.jar;C:\luwrain\lib\poi-ooxml-3.11-20141221.jar;C:\luwrain\lib\poi-ooxml-schemas-3.11-20141221.jar;C:\luwrain\lib\poi-scratchpad-3.11-20141221.jar;C:\luwrain\lib\rome.jar;C:\luwrain\lib\sqltool.jar;C:\luwrain\lib\twitter4j-async-4.0.1.jar;C:\luwrain\lib\twitter4j-core-4.0.1.jar;C:\luwrain\lib\twitter4j-media-support-4.0.1.jar;C:\luwrain\lib\twitter4j-stream-4.0.1.jar; org.luwrain.core.Init --registry-dir=C:\luwrain\registry --lang=ru --os=org.luwrain.windows.Windows --speech=org.luwrain.windows.speech.SAPI --data-dir=C:\luwrain\data --user-home-dir=%USERPROFILE%\Documents
+@echo off
+
+rem set LUWRAIN_HOME to current dir
+for /f %%i in ("%0") do set LUWRAIN_HOME=%%~dpi
+
+set LUWRAIN_LANG=ru
+set LUWRAIN_MAIN_CLASS=org.luwrain.core.Init
+set LUWRAIN_SPEECH_CLASS=org.luwrain.windows.speech.SAPI
+
+set LUWRAIN_USER_HOME_DIR=%USERPROFILE%\Documents
+set LUWRAIN_DATA_DIR=%LUWRAIN_HOME%data
+set LUWRAIN_REGISTRY_DIR=%LUWRAIN_HOME%registry
+
+set CLASS_PATH=
+rem collect *.jar files from lib and jar to CLASS_PATH
+goto :go
+:loop
+  set CLASS_PATH=%CLASS_PATH%%1;
+goto :eof
+:go
+for %%a in (jar\*.jar;lib\*.jar) do call :loop %%a
+
+rem let's go
+java -cp %CLASS_PATH% %LUWRAIN_MAIN_CLASS% --registry-dir="%LUWRAIN_REGISTRY_DIR%" --lang=%LUWRAIN_LANG% --os=org.luwrain.windows.Windows --speech=%LUWRAIN_SPEECH_CLASS% --data-dir="%LUWRAIN_DATA_DIR%" --user-home-dir="%LUWRAIN_USER_HOME_DIR%"
