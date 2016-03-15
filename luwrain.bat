@@ -1,15 +1,21 @@
 @echo off
 
 rem set LUWRAIN_HOME to current dir
-for /f %%i in ("%0") do set LUWRAIN_HOME=%%~dpi
+for /r %%i in (.) do (
+  set LUWRAIN_HOME=%%i
+  goto :endPWD
+)
+:endPWD
+rem cut path last chars '\' and '.'
+set LUWRAIN_HOME=%LUWRAIN_HOME:~0,-2%
 
 set LUWRAIN_LANG=ru
 set LUWRAIN_MAIN_CLASS=org.luwrain.core.Init
 set LUWRAIN_SPEECH_CLASS=org.luwrain.windows.speech.SAPI
 
 set LUWRAIN_USER_HOME_DIR=%USERPROFILE%\Documents
-set LUWRAIN_DATA_DIR=%LUWRAIN_HOME%data
-set LUWRAIN_REGISTRY_DIR=%LUWRAIN_HOME%registry
+set LUWRAIN_DATA_DIR=%LUWRAIN_HOME%\data
+set LUWRAIN_REGISTRY_DIR=%LUWRAIN_HOME%\registry
 
 set CLASS_PATH=
 rem collect *.jar files from lib and jar to CLASS_PATH
