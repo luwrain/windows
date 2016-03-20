@@ -28,7 +28,7 @@ import org.luwrain.core.Registry;
 import org.luwrain.core.RegistryProxy;
 import org.luwrain.os.KeyboardHandler;
 import org.luwrain.speech.Channel;
-import org.luwrain.windows.speech.SAPIChannel;
+import org.luwrain.windows.speech.SapiChannel;
 import org.luwrain.os.OperatingSystem;
 
 public class Windows implements OperatingSystem
@@ -77,12 +77,10 @@ public class Windows implements OperatingSystem
 		NullCheck.notNull(type, "type");
 		switch(type)
 		{
-		case "command":
-		    return new SAPIChannel();
-		//case "voiceman":
-		    //return new VoiceMan();
+		case "sapi":
+		    return new SapiChannel();
 		default:
-		    Log.error("linux", "unknown speech channel type:" + type);
+		    Log.error("windows", "unknown speech channel type:" + type);
 		    return null;
 		}
 	}
