@@ -85,12 +85,12 @@ class KeyboardJavafxHandler implements KeyboardHandler
 	    final String ch=event.getText();
 	    if((shiftPressed||leftAltPressed||rightAltPressed)&&!ch.isEmpty())
 	    {
-	    	final KeyboardEvent emulated=new KeyboardEvent(false,null,ch.toLowerCase().charAt(0),shiftPressed,controlPressed,leftAltPressed,rightAltPressed);
+	    	final KeyboardEvent emulated=new KeyboardEvent(ch.toLowerCase().charAt(0),shiftPressed,controlPressed,leftAltPressed);
 	    	consumer.enqueueEvent(emulated);
 	    }
 	    return;
 	}
-	consumer.enqueueEvent(new KeyboardEvent(true,code,' ',shiftPressed,controlPressed,leftAltPressed,rightAltPressed));
+	consumer.enqueueEvent(new KeyboardEvent(code,shiftPressed,controlPressed,leftAltPressed));
     }
 
     @Override public void onKeyReleased(Object obj)
@@ -125,10 +125,10 @@ class KeyboardJavafxHandler implements KeyboardHandler
 			    code=Special.TAB; else
 			{
 			    // FIXME: javafx characters return as String type we need a char (now return first symbol)
-			    final KeyboardEvent emulated=new KeyboardEvent(false, null,event.getCharacter().charAt(0),shiftPressed,controlPressed,leftAltPressed,rightAltPressed);
+			    final KeyboardEvent emulated=new KeyboardEvent(event.getCharacter().charAt(0),shiftPressed,controlPressed,leftAltPressed);
 			    consumer.enqueueEvent(emulated);
 			    return;
 			}
-	consumer.enqueueEvent(new KeyboardEvent(true, code, ' ',shiftPressed,controlPressed,leftAltPressed,rightAltPressed));
+	consumer.enqueueEvent(new KeyboardEvent(code, shiftPressed,controlPressed,leftAltPressed));
     }
 }

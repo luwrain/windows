@@ -28,7 +28,6 @@ import org.luwrain.core.Registry;
 import org.luwrain.core.RegistryProxy;
 import org.luwrain.os.KeyboardHandler;
 import org.luwrain.speech.Channel;
-import org.luwrain.windows.speech.SapiChannel;
 import org.luwrain.os.OperatingSystem;
 
 public class Windows implements OperatingSystem
@@ -41,6 +40,16 @@ public class Windows implements OperatingSystem
     @Override public boolean init(String dataDir)
     {
     	return true;
+    }
+
+    @Override public org.luwrain.os.Braille getBraille()
+    {
+	return null;
+    }
+
+    @Override public String getProperty(String propName)
+    {
+	return "";
     }
 
     private final Hardware hardware = new Hardware();
@@ -74,15 +83,7 @@ public class Windows implements OperatingSystem
 
 	@Override public Channel loadSpeechChannel(String type)
 	{
-		NullCheck.notNull(type, "type");
-		switch(type)
-		{
-		case "sapi":
-		    return new SapiChannel();
-		default:
-		    Log.error("windows", "unknown speech channel type:" + type);
-		    return null;
-		}
+	    return null;
 	}
 
 	@Override public KeyboardHandler getCustomKeyboardHandler(String subsystem)

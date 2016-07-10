@@ -1,6 +1,0 @@
-package org.luwrain.windows.speech;
-
-class  SAPIImpl_constants
-{
-	const int SPF_IS_XML
-}
