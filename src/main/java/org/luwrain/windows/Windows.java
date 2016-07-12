@@ -27,7 +27,6 @@ import org.luwrain.core.NullCheck;
 import org.luwrain.core.Registry;
 import org.luwrain.core.RegistryProxy;
 import org.luwrain.os.KeyboardHandler;
-import org.luwrain.speech.Channel;
 import org.luwrain.os.OperatingSystem;
 
 public class Windows implements OperatingSystem
@@ -79,11 +78,6 @@ public class Windows implements OperatingSystem
 			// FEXME: make better error handling
 			Log.debug("windows",e.getMessage());
 		}
-	}
-
-	@Override public Channel loadSpeechChannel(String type)
-	{
-	    return null;
 	}
 
 	@Override public KeyboardHandler getCustomKeyboardHandler(String subsystem)
