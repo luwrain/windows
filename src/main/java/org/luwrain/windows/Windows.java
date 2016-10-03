@@ -22,10 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-import org.luwrain.core.Log;
-import org.luwrain.core.NullCheck;
-import org.luwrain.core.Registry;
-import org.luwrain.core.RegistryProxy;
+import org.luwrain.core.*;
 import org.luwrain.os.KeyboardHandler;
 import org.luwrain.os.OperatingSystem;
 
@@ -106,5 +103,10 @@ public class Windows implements OperatingSystem
 	{
 		return false;
 	}
+
+    @Override public OsCommand runOsCommand(String cmd, String dir, OsCommand.Output output, OsCommand.Listener listener)
+    {
+	return null;
+    }
 
 }
