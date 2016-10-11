@@ -22,13 +22,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-import org.luwrain.core.Log;
-import org.luwrain.core.NullCheck;
-import org.luwrain.core.Registry;
-import org.luwrain.core.RegistryProxy;
+import org.luwrain.core.*;
 import org.luwrain.os.KeyboardHandler;
-import org.luwrain.speech.Channel;
-import org.luwrain.windows.speech.SAPIChannel;
 import org.luwrain.os.OperatingSystem;
 
 public class Windows implements OperatingSystem
@@ -41,6 +36,16 @@ public class Windows implements OperatingSystem
     @Override public boolean init(String dataDir)
     {
     	return true;
+    }
+
+    @Override public org.luwrain.os.Braille getBraille()
+    {
+	return null;
+    }
+
+    @Override public String getProperty(String propName)
+    {
+	return "";
     }
 
     private final Hardware hardware = new Hardware();
@@ -72,21 +77,6 @@ public class Windows implements OperatingSystem
 		}
 	}
 
-	@Override public Channel loadSpeechChannel(String type)
-	{
-		NullCheck.notNull(type, "type");
-		switch(type)
-		{
-		case "command":
-		    return new SAPIChannel();
-		//case "voiceman":
-		    //return new VoiceMan();
-		default:
-		    Log.error("linux", "unknown speech channel type:" + type);
-		    return null;
-		}
-	}
-
 	@Override public KeyboardHandler getCustomKeyboardHandler(String subsystem)
 	{
 		NullCheck.notNull(subsystem, "subsystem");
@@ -113,5 +103,10 @@ public class Windows implements OperatingSystem
 	{
 		return false;
 	}
+
+    @Override public OsCommand runOsCommand(String cmd, String dir, OsCommand.Output output, OsCommand.Listener listener)
+    {
+	return null;
+    }
 
 }
