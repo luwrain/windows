@@ -11,7 +11,6 @@ set LUWRAIN_HOME=%LUWRAIN_HOME:~0,-2%
 
 set LUWRAIN_LANG=ru
 set LUWRAIN_MAIN_CLASS=org.luwrain.core.Init
-set LUWRAIN_SPEECH_CLASS=org.luwrain.windows.speech.SAPI
 
 set LUWRAIN_USER_HOME_DIR=%USERPROFILE%\Documents
 set LUWRAIN_DATA_DIR=%LUWRAIN_HOME%\data
@@ -27,4 +26,4 @@ goto :eof
 for %%a in (jar\*.jar;lib\*.jar) do call :loop %%a
 
 rem let's go
-java -cp %CLASS_PATH% %LUWRAIN_MAIN_CLASS% --registry-dir="%LUWRAIN_REGISTRY_DIR%" --lang=%LUWRAIN_LANG% --os=org.luwrain.windows.Windows --speech=%LUWRAIN_SPEECH_CLASS% --data-dir="%LUWRAIN_DATA_DIR%" --user-home-dir="%LUWRAIN_USER_HOME_DIR%"
+java -cp %CLASS_PATH% %LUWRAIN_MAIN_CLASS% --registry-dir="%LUWRAIN_REGISTRY_DIR%" --lang=%LUWRAIN_LANG% --os=org.luwrain.windows.Windows --data-dir="%LUWRAIN_DATA_DIR%" --user-home-dir="%LUWRAIN_USER_HOME_DIR%"
