@@ -83,12 +83,12 @@ class KeyboardJavafxHandler implements KeyboardHandler
 	case ALT:code=Special.LEFT_ALT;break;
 	case ALT_GRAPH:code=Special.RIGHT_ALT;break;
 	default:
-//	    final String ch=event.getText();
-//	    if((shiftPressed||leftAltPressed||rightAltPressed)&&!ch.isEmpty())
-//	    {
-//	    	final KeyboardEvent emulated=new KeyboardEvent(ch.toLowerCase().charAt(0),shiftPressed,controlPressed,leftAltPressed);
-//	    	consumer.enqueueEvent(emulated);
-//	    }
+	    final String ch=event.getText();
+	    if(!shiftPressed&&(leftAltPressed||rightAltPressed)&&!ch.isEmpty())
+	    {
+	    	final KeyboardEvent emulated=new KeyboardEvent(ch.toLowerCase().charAt(0),shiftPressed,controlPressed,leftAltPressed);
+	    	consumer.enqueueEvent(emulated);
+	    }
 	    return;
 	}
 	consumer.enqueueEvent(new KeyboardEvent(code,shiftPressed,controlPressed,leftAltPressed));
