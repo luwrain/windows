@@ -19,7 +19,7 @@ package org.luwrain.windows;
 
 import java.io.File;
 
-import org.luwrain.hardware.Partition;
+import org.luwrain.base.Partition;
 
 class MountedPartitions
 {

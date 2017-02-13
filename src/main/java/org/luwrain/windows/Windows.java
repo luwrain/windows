@@ -23,8 +23,8 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 import org.luwrain.core.*;
-import org.luwrain.os.KeyboardHandler;
-import org.luwrain.os.OperatingSystem;
+import org.luwrain.interaction.KeyboardHandler;
+import org.luwrain.base.OperatingSystem;
 
 public class Windows implements OperatingSystem
 {
@@ -38,7 +38,7 @@ public class Windows implements OperatingSystem
     	return true;
     }
 
-    @Override public org.luwrain.os.Braille getBraille()
+    @Override public org.luwrain.base.Braille getBraille()
     {
 	return null;
     }
@@ -50,7 +50,7 @@ public class Windows implements OperatingSystem
 
     private final Hardware hardware = new Hardware();
 
-    @Override public org.luwrain.hardware.Hardware getHardware()
+    @Override public org.luwrain.base.Hardware getHardware()
     {
 	return hardware;
     }

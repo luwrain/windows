@@ -22,8 +22,8 @@ import javafx.scene.input.KeyEvent;
 
 import org.luwrain.core.events.KeyboardEvent;
 import org.luwrain.core.events.KeyboardEvent.Special;
-import org.luwrain.os.KeyboardHandler;
-import org.luwrain.core.EventConsumer;
+import org.luwrain.interaction.KeyboardHandler;
+import org.luwrain.base.EventConsumer;
 
 @SuppressWarnings({"deprecation","restriction"}) 
 class KeyboardJavafxHandler implements KeyboardHandler

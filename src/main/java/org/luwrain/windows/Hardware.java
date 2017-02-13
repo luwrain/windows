@@ -17,9 +17,9 @@
 
 package org.luwrain.windows;
 
-import org.luwrain.hardware.*;
+import org.luwrain.base.*;
 
-class Hardware implements org.luwrain.hardware.Hardware
+class Hardware implements org.luwrain.base.Hardware
 {
     @Override public AudioMixer getAudioMixer()
     {
