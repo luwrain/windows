@@ -1,8 +1,8 @@
 /*
    Copyright 2015-2016 Roman Volovodov <gr.rPman@gmail.com>
-   Copyright 2012-2016 Michael Pozhidaev <michael.pozhidaev@gmail.com>
+   Copyright 2012-2017 Michael Pozhidaev <michael.pozhidaev@gmail.com>
 
-   This file is part of the LUWRAIN.
+   This file is part of LUWRAIN.
 
    LUWRAIN is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public
@@ -15,6 +15,8 @@
    General Public License for more details.
 */
 
+
+
 package org.luwrain.windows;
 
 import java.awt.Desktop;
@@ -22,9 +24,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import org.luwrain.base.*;
 import org.luwrain.core.*;
 import org.luwrain.interaction.KeyboardHandler;
-import org.luwrain.base.OperatingSystem;
 
 public class Windows implements OperatingSystem
 {
@@ -32,6 +34,8 @@ public class Windows implements OperatingSystem
     {
 	String getType();
     };
+
+    private final org.luwrain.windows.fileops.Operations filesOperations = new org.luwrain.windows.fileops.Operations();
 
     @Override public boolean init(String dataDir)
     {
@@ -109,4 +113,8 @@ public class Windows implements OperatingSystem
 	return null;
     }
 
+    @Override public FilesOperations getFilesOperations()
+    {
+	return filesOperations;
+    }
 }
