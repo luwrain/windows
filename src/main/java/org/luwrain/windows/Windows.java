@@ -28,7 +28,7 @@ import org.luwrain.base.*;
 import org.luwrain.core.*;
 import org.luwrain.interaction.KeyboardHandler;
 
-public class Windows implements OperatingSystem
+public final class Windows implements OperatingSystem
 {
     interface ChannelBasicData
     {
@@ -37,9 +37,10 @@ public class Windows implements OperatingSystem
 
     private final org.luwrain.windows.fileops.Operations filesOperations = new org.luwrain.windows.fileops.Operations();
 
-    @Override public boolean init(String dataDir)
+    @Override public InitResult init(org.luwrain.base.CoreProperties props)
     {
-    	return true;
+	NullCheck.notNull(props, "props");
+    	return new InitResult();
     }
 
     @Override public org.luwrain.base.Braille getBraille()
