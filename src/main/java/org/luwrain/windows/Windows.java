@@ -94,21 +94,6 @@ public final class Windows implements OperatingSystem
 		}
 	}
 
-	@Override public boolean shutdown()
-	{
-		return false;
-	}
-
-	@Override public boolean reboot()
-	{
-		return false;
-	}
-
-	@Override public boolean suspend(boolean hibernate)
-	{
-		return false;
-	}
-
     @Override public OsCommand runOsCommand(String cmd, String dir, OsCommand.Output output, OsCommand.Listener listener)
     {
 	return null;
