@@ -17,20 +17,29 @@
 
 package org.luwrain.windows;
 
-import java.io.File;
+import java.io.*;
 
-import org.luwrain.base.hardware.*;
+import org.luwrain.core.*;
 
-class MountedPartitions
+public final class Volume
 {
-static Partition[] getMountedPartitions()
+    public enum Type {
+	REGULAR,
+	REMOVABLE,
+	REMOTE,
+    };
+
+    public final Type type;
+    public final File file;
+    public final String name;
+
+    Volume(Type type, File file, String name)
     {
-	final File[] f = File.listRoots();
-	if (f == null || f.length < 1)
-	    return new Partition[]{new PartitionImpl(Partition.Type.REGULAR, new File("C:\\"), "C:\\", true)};
-	Partition[] l = new Partition[f.length];
-	for(int i = 0;i < f.length;++i)
-	    l[i] = new PartitionImpl(Partition.Type.REGULAR, f[i], f[i].getAbsolutePath(), true);
-	return l;
+	NullCheck.notNull(type, "type");
+	NullCheck.notNull(file, "file");
+	NullCheck.notNull(name, "name");
+	this.type = type;
+	this.file = file;
+	this.name = name;
     }
 }

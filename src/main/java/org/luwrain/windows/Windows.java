@@ -35,7 +35,7 @@ public final class Windows implements OperatingSystem
 
     private final org.luwrain.windows.fileops.Operations filesOperations = new org.luwrain.windows.fileops.Operations();
 
-    @Override public InitResult init(org.luwrain.base.CoreProperties props)
+    @Override public InitResult init(org.luwrain.base.PropertiesBase props)
     {
 	NullCheck.notNull(props, "props");
     	return new InitResult();
@@ -44,18 +44,6 @@ public final class Windows implements OperatingSystem
     @Override public org.luwrain.base.Braille getBraille()
     {
 	return null;
-    }
-
-    @Override public String getProperty(String propName)
-    {
-	return "";
-    }
-
-    private final Hardware hardware = new Hardware();
-
-    @Override public org.luwrain.base.hardware.Hardware getHardware()
-    {
-	return hardware;
     }
 
 	@Override public void openFileInDesktop(Path path)
