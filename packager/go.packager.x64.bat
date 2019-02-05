@@ -1,0 +1,1 @@
+go.packager.bat x64

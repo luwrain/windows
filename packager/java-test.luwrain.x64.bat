@@ -1,0 +1,1 @@
+java-test.luwrain.bat x64
