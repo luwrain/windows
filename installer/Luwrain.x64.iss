@@ -1,14 +1,13 @@
-;This file will be executed next to the application bundle image
-;I.e. current directory will contain folder Luwrain with application files
+
 [Setup]
 AppId={{org.luwrain.core}}
-AppName=Luwrain
-AppVersion=1.0
-AppVerName=Luwrain 1.0
-AppPublisher=Luwrain
-AppComments=Luwrain
-AppCopyright=Copyright (C) 2016
-;AppPublisherURL=http://java.com/
+AppName=LUWRAIN
+AppVersion=LUWRAIN_VERSION
+AppVerName=LUWRAIN LUWRAIN_VERSION
+AppPublisher=LUWRAIN
+AppComments=A platform for the creation of apps for the blind and partially-sighted
+AppCopyright=Copyright (C) 2012-2019 LUWRAIN developers
+AppPublisherURL=http://luwrain.org
 ;AppSupportURL=http://java.com/
 ;AppUpdatesURL=http://java.com/
 ;{localappdata}\Luwrain
@@ -19,7 +18,7 @@ DisableProgramGroupPage=Yes
 DisableReadyPage=Yes
 DisableFinishedPage=Yes
 DisableWelcomePage=Yes
-DefaultGroupName=Luwrain
+DefaultGroupName=LUWRAIN
 ;Optional License
 LicenseFile=
 ;WinXP or above
@@ -32,7 +31,7 @@ SetupIconFile=Luwrain\Luwrain.ico
 UninstallDisplayIcon={app}\Luwrain.ico
 UninstallDisplayName=Luwrain
 WizardImageStretch=No
-WizardSmallImageFile=..\Luwrain-setup-icon.bmp
+WizardSmallImageFile=Luwrain-setup-icon.bmp
 ArchitecturesInstallIn64BitMode=x64
 
 
