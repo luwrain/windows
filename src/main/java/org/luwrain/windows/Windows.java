@@ -89,4 +89,9 @@ public final class Windows implements OperatingSystem
     {
 	return filesOperations;
     }
+
+    @Override public OsInterface getInterface()
+    {
+	return null;
+    }
 }
