@@ -114,15 +114,15 @@ class KeyboardJavafxHandler implements KeyboardHandler
 	leftAltPressed=event.isAltDown();
 	final String keychar=event.getCharacter();
 	Special code;
-	if(keychar.equals(KeyCode.BACK_SPACE.impl_getChar()))
+	if(keychar.equals("\b"))
 	    code=Special.BACKSPACE; else
-	    if(keychar.equals(KeyCode.ENTER.impl_getChar())||keychar.equals("\n")||keychar.equals("\r")) 
+	    if(keychar.equals("\n") || keychar.equals("\r")) 
 		code=Special.ENTER; else 
-		if(keychar.equals(KeyCode.ESCAPE.impl_getChar())) 
+		if(keychar.equals("\u001b"))
 		    code=Special.ESCAPE; else
-		    if(keychar.equals(KeyCode.DELETE.impl_getChar())) 
+		    if(keychar.equals("\u007f"))
 			code=Special.DELETE; else 
-			if(keychar.equals(KeyCode.TAB.impl_getChar())) 
+			if(keychar.equals("\t"))
 			    code=Special.TAB; else
 			{
 			    // FIXME: javafx characters return as String type we need a char (now return first symbol)
