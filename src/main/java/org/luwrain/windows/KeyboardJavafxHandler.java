@@ -20,8 +20,8 @@ package org.luwrain.windows;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-import org.luwrain.core.events.KeyboardEvent;
-import org.luwrain.core.events.KeyboardEvent.Special;
+import org.luwrain.core.events.InputEvent;
+import org.luwrain.core.events.InputEvent.Special;
 import org.luwrain.interaction.KeyboardHandler;
 import org.luwrain.base.EventConsumer;
 
@@ -86,12 +86,12 @@ class KeyboardJavafxHandler implements KeyboardHandler
 	    final String ch=event.getText();
 	    if(!shiftPressed&&(leftAltPressed||rightAltPressed)&&!ch.isEmpty())
 	    {
-	    	final KeyboardEvent emulated=new KeyboardEvent(ch.toLowerCase().charAt(0),shiftPressed,controlPressed,leftAltPressed);
+	    	final InputEvent emulated=new InputEvent(ch.toLowerCase().charAt(0),shiftPressed,controlPressed,leftAltPressed);
 	    	consumer.enqueueEvent(emulated);
 	    }
 	    return;
 	}
-	consumer.enqueueEvent(new KeyboardEvent(code,shiftPressed,controlPressed,leftAltPressed));
+	consumer.enqueueEvent(new InputEvent(code,shiftPressed,controlPressed,leftAltPressed));
     }
 
     @Override public void onKeyReleased(Object obj)
@@ -126,10 +126,10 @@ class KeyboardJavafxHandler implements KeyboardHandler
 			    code=Special.TAB; else
 			{
 			    // FIXME: javafx characters return as String type we need a char (now return first symbol)
-			    final KeyboardEvent emulated=new KeyboardEvent(event.getCharacter().charAt(0),shiftPressed,controlPressed,leftAltPressed);
+			    final InputEvent emulated=new InputEvent(event.getCharacter().charAt(0),shiftPressed,controlPressed,leftAltPressed);
 			    consumer.enqueueEvent(emulated);
 			    return;
 			}
-	consumer.enqueueEvent(new KeyboardEvent(code, shiftPressed,controlPressed,leftAltPressed));
+	consumer.enqueueEvent(new InputEvent(code, shiftPressed,controlPressed,leftAltPressed));
     }
 }
