@@ -47,8 +47,8 @@ Name: "{commondesktop}\LUWRAIN Reader"; Filename: "%ComSpec%"; Parameters: "/c s
 
 [Run]
 Filename: "{code:GetDefaultDir}\reader.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
-;Filename: "{code:GetDefaultDir}\reader.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
-;Filename: "{code:GetDefaultDir}\reader.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""reader"" -mainExe ""reader.exe""  "; Check: returnFalse()
+Filename: "{code:GetDefaultDir}\reader.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
+Filename: "{code:GetDefaultDir}\reader.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""reader"" -mainExe ""reader.exe""  "; Check: returnFalse()
 
 [UninstallRun]
 ;Filename: "{code:GetDefaultDir}\reader.exe "; Parameters: "-uninstall -svcName Luwrain -stopOnUninstall"; Check: returnFalse()
