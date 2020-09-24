@@ -1,12 +1,12 @@
 
 [Setup]
-AppId={{org.luwrain.core}}
-AppName=LUWRAIN
+AppId={{org.luwrain.anatomy}}
+AppName=Human Anatomy
 AppVersion=LUWRAIN_VERSION
-AppVerName=LUWRAIN LUWRAIN_VERSION
-AppPublisher=LUWRAIN
-AppComments=A platform for the creation of apps for the blind and partially-sighted
-AppCopyright=Copyright (C) 2012-2019 LUWRAIN developers
+AppVerName=Human Anatomy LUWRAIN_VERSION
+AppPublisher=The LUWRAIN Project
+AppComments=An interactive human anatomy for the blind
+AppCopyright=Copyright (C) 2012-2020 LUWRAIN developers
 AppPublisherURL=http://luwrain.org
 ;AppSupportURL=http://java.com/
 ;AppUpdatesURL=http://java.com/
@@ -18,42 +18,40 @@ DisableProgramGroupPage=Yes
 DisableReadyPage=Yes
 DisableFinishedPage=Yes
 DisableWelcomePage=Yes
-DefaultGroupName=LUWRAIN
+DefaultGroupName=Невизуальная анатомия
 ;Optional License
 LicenseFile=
 ;WinXP or above
 MinVersion=0,5.1 
-OutputBaseFilename=Luwrain-1.0
+OutputBaseFilename=LuwrainAnatomy-LUWRAIN_VERSION
 Compression=lzma2/normal
 SolidCompression=yes
 PrivilegesRequired=lowest
-SetupIconFile=Luwrain\Luwrain.ico
-UninstallDisplayIcon={app}\Luwrain.ico
-UninstallDisplayName=Luwrain
+SetupIconFile=Luwrain\anatomy.ico
+UninstallDisplayIcon={app}\anatomy.ico
+UninstallDisplayName=Невизуальная анатомия
 WizardImageStretch=No
 WizardSmallImageFile=Luwrain-setup-icon.bmp
 ArchitecturesInstallIn64BitMode=x64
-
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "Luwrain\Luwrain.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Luwrain\anatomy.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; IconFilename: "{app}\Luwrain.ico"; Check: returnTrue()
-Name: "{commondesktop}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; IconFilename: "{app}\Luwrain.ico"; Check: returnFalse()
-
+Name: "{group}\Невизуальная анатомия"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\anatomy.exe"; IconFilename: "{app}\reader.ico"; Check: returnTrue()
+Name: "{commondesktop}\Невизуальная анатомия"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\anatomy.exe"; IconFilename: "{app}\reader.ico"; Check: returnFalse()
 
 [Run]
-Filename: "{code:GetDefaultDir}\Luwrain.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
-Filename: "{code:GetDefaultDir}\Luwrain.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
-Filename: "{code:GetDefaultDir}\Luwrain.exe"; Parameters: "-install -svcName ""Luwrain"" -svcDesc ""Luwrain"" -mainExe ""Luwrain.exe""  "; Check: returnFalse()
+Filename: "{code:GetDefaultDir}\anatomy.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
+Filename: "{code:GetDefaultDir}\anatomy.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
+Filename: "{code:GetDefaultDir}\anatomy.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""reader"" -mainExe ""anatomy.exe""  "; Check: returnFalse()
 
 [UninstallRun]
-Filename: "{code:GetDefaultDir}\Luwrain.exe "; Parameters: "-uninstall -svcName Luwrain -stopOnUninstall"; Check: returnFalse()
+;Filename: "{code:GetDefaultDir}\anatomy.exe "; Parameters: "-uninstall -svcName Luwrain -stopOnUninstall"; Check: returnFalse()
 
 [Code]
 const
@@ -88,8 +86,8 @@ end;
 
 function GetDefaultDir(def: string): string;
 begin
-    // {localappdata}\Luwrain
-    Result := GetShortName(GetEnv('localappdata')+'\Luwrain');
+    // {localappdata}\LuwrainReader
+    Result := GetShortName(GetEnv('localappdata')+'\LuwrainReader');
 end;
 
 function InitializeSetup(): Boolean;
