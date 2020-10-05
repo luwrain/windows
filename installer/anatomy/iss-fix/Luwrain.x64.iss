@@ -42,8 +42,8 @@ Source: "Luwrain\anatomy.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\Невизуальная анатомия"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\anatomy.exe"; IconFilename: "{app}\reader.ico"; Check: returnTrue()
-Name: "{commondesktop}\Невизуальная анатомия"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\anatomy.exe"; IconFilename: "{app}\reader.ico"; Check: returnFalse()
+Name: "{group}\Невизуальная анатомия"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\anatomy.exe"; IconFilename: "{app}\anatomy.ico"; Check: returnTrue()
+Name: "{commondesktop}\Невизуальная анатомия"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\anatomy.exe"; IconFilename: "{app}\anatomy.ico"; Check: returnFalse()
 
 [Run]
 Filename: "{code:GetDefaultDir}\anatomy.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
