@@ -31,7 +31,7 @@ SetupIconFile=Luwrain\anatomy.ico
 UninstallDisplayIcon={app}\anatomy.ico
 UninstallDisplayName=Невизуальная анатомия
 WizardImageStretch=No
-WizardSmallImageFile=Luwrain-setup-icon.bmp
+WizardSmallImageFile=setup-icon.bmp
 ArchitecturesInstallIn64BitMode=x64
 
 [Languages]

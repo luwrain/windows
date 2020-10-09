@@ -31,7 +31,7 @@ SetupIconFile=Luwrain\reader.ico
 UninstallDisplayIcon={app}\reader.ico
 UninstallDisplayName=LUWRAIN Reader
 WizardImageStretch=No
-WizardSmallImageFile=Luwrain-setup-icon.bmp
+WizardSmallImageFile=setup-icon.bmp
 ArchitecturesInstallIn64BitMode=x64
 
 [Languages]

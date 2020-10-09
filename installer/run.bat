@@ -5,9 +5,9 @@ set Path=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\Syst
 
 echo Creating installer for %ARCH%
 
-cd C:\luwrain.packager\iss-fix\
-copy setup-icon.bmp %ARCH%\ > nul
-cd %ARCH%
+cd C:\luwrain.packager\
+copy setup-icon.bmp iss-fix\%ARCH%\ > nul
+cd C:\luwrain.packager\iss-fix\%ARCH%\
 iscc Luwrain.iss > iscc.log
 if not ERRORLEVEL == 0 (
   echo iss FIX error

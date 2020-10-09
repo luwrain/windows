@@ -31,7 +31,7 @@ SetupIconFile=Luwrain\dm.ico
 UninstallDisplayIcon={app}\dm.ico
 UninstallDisplayName=Директ-Медиа
 WizardImageStretch=No
-WizardSmallImageFile=Luwrain-setup-icon.bmp
+WizardSmallImageFile=setup-icon.bmp
 ArchitecturesInstallIn64BitMode=x64
 
 [Languages]
