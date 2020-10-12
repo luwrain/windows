@@ -48,7 +48,7 @@ Name: "{commondesktop}\Невизуальная анатомия"; Filename: "%C
 [Run]
 Filename: "{code:GetDefaultDir}\anatomy.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
 Filename: "{code:GetDefaultDir}\anatomy.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
-Filename: "{code:GetDefaultDir}\anatomy.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""reader"" -mainExe ""anatomy.exe""  "; Check: returnFalse()
+Filename: "{code:GetDefaultDir}\anatomy.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""anatomy"" -mainExe ""anatomy.exe""  "; Check: returnFalse()
 
 [UninstallRun]
 ;Filename: "{code:GetDefaultDir}\anatomy.exe "; Parameters: "-uninstall -svcName Luwrain -stopOnUninstall"; Check: returnFalse()

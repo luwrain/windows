@@ -48,7 +48,7 @@ Name: "{commondesktop}\директ-Медиа"; Filename: "%ComSpec%"; Paramete
 [Run]
 Filename: "{code:GetDefaultDir}\dm.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
 Filename: "{code:GetDefaultDir}\dm.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
-Filename: "{code:GetDefaultDir}\dm.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""reader"" -mainExe ""dm.exe""  "; Check: returnFalse()
+Filename: "{code:GetDefaultDir}\dm.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""dm"" -mainExe ""dm.exe""  "; Check: returnFalse()
 
 [UninstallRun]
 ;Filename: "{code:GetDefaultDir}\dm.exe "; Parameters: "-uninstall -svcName Luwrain -stopOnUninstall"; Check: returnFalse()
@@ -86,8 +86,8 @@ end;
 
 function GetDefaultDir(def: string): string;
 begin
-    // {localappdata}\LuwrainReader
-    Result := GetShortName(GetEnv('localappdata')+'\LuwrainReader');
+    // {localappdata}\DirectMedia
+    Result := GetShortName(GetEnv('localappdata')+'\DirectMedia');
 end;
 
 function InitializeSetup(): Boolean;

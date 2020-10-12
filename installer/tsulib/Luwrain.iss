@@ -42,13 +42,13 @@ Source: "Luwrain\tsulib.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\Научная библиотека ТГУ"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\tsulib.exe"; IconFilename: "{app}\reader.ico"; Check: returnTrue()
-Name: "{commondesktop}\Научная библиотека ТГУ"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\tsulib.exe"; IconFilename: "{app}\reader.ico"; Check: returnFalse()
+Name: "{group}\Научная библиотека ТГУ"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\tsulib.exe"; IconFilename: "{app}\tsulib.ico"; Check: returnTrue()
+Name: "{commondesktop}\Научная библиотека ТГУ"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\tsulib.exe"; IconFilename: "{app}\tsulib.ico"; Check: returnFalse()
 
 [Run]
 Filename: "{code:GetDefaultDir}\tsulib.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
 Filename: "{code:GetDefaultDir}\tsulib.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
-Filename: "{code:GetDefaultDir}\tsulib.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""reader"" -mainExe ""tsulib.exe""  "; Check: returnFalse()
+Filename: "{code:GetDefaultDir}\tsulib.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""tsulib"" -mainExe ""tsulib.exe""  "; Check: returnFalse()
 
 [UninstallRun]
 ;Filename: "{code:GetDefaultDir}\tsulib.exe "; Parameters: "-uninstall -svcName Luwrain -stopOnUninstall"; Check: returnFalse()
@@ -86,8 +86,8 @@ end;
 
 function GetDefaultDir(def: string): string;
 begin
-    // {localappdata}\LuwrainReader
-    Result := GetShortName(GetEnv('localappdata')+'\LuwrainReader');
+    // {localappdata}\TsuLib
+    Result := GetShortName(GetEnv('localappdata')+'\TsuLib');
 end;
 
 function InitializeSetup(): Boolean;
