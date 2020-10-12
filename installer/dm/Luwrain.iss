@@ -1,11 +1,11 @@
 
 [Setup]
 AppId={{org.luwrain.dm}}
-AppName=Директ-Медиа
+AppName=Директ-Медиа Чтение вслух
 AppVersion=0.1.0
-AppVerName=Директ-Медиа 0.1.0
+AppVerName=Директ-Медиа Чтение вслух 0.1.0
 AppPublisher=Директ-Медиа
-AppComments=An interactive reader for the blind by Direct-Media
+AppComments=Невизуальное приложение для работы с ЭБС ДИрект-Медиа
 AppCopyright=Copyright (C) 2020 Direct-Media
 AppPublisherURL=http://directmedia.ru
 ;AppSupportURL=http://java.com/
@@ -42,7 +42,7 @@ Source: "Luwrain\dm.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\Директ-Медиа"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\dm.exe"; IconFilename: "{app}\dm.ico"; Check: returnTrue()
+Name: "{group}\Чтение вслух"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\dm.exe"; IconFilename: "{app}\dm.ico"; Check: returnTrue()
 Name: "{commondesktop}\директ-Медиа"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\dm.exe"; IconFilename: "{app}\dm.ico"; Check: returnFalse()
 
 [Run]
