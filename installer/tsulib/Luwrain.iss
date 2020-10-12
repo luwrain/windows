@@ -1,12 +1,12 @@
 
 [Setup]
-AppId={{org.luwrain.anatomy}}
-AppName=Human Anatomy
+AppId={{ru.tsu.lib.app}}
+AppName=Научная библиотека ТГУ
 AppVersion=LUWRAIN_VERSION
-AppVerName=Human Anatomy LUWRAIN_VERSION
-AppPublisher=The LUWRAIN Project
-AppComments=An interactive human anatomy for the blind
-AppCopyright=Copyright (C) 2012-2020 LUWRAIN developers
+AppVerName=Научная библиотека ТГУ LUWRAIN_VERSION
+AppPublisher=Национальный исследовательский Томский государственный университет
+AppComments=Невизуальное приложение для работы с каталогом научной библиотеки ТГУ
+AppCopyright=Copyright (C) 2018-2020 Национальный исследовательский Томский государственный университет
 AppPublisherURL=http://luwrain.org
 ;AppSupportURL=http://java.com/
 ;AppUpdatesURL=http://java.com/
@@ -18,40 +18,40 @@ DisableProgramGroupPage=Yes
 DisableReadyPage=Yes
 DisableFinishedPage=Yes
 DisableWelcomePage=Yes
-DefaultGroupName=Невизуальная анатомия
+DefaultGroupName=Томский государственный университет
 ;Optional License
 LicenseFile=
 ;WinXP or above
 MinVersion=0,5.1 
-OutputBaseFilename=LuwrainAnatomy-LUWRAIN_VERSION
+OutputBaseFilename=tsulib-LUWRAIN_VERSION
 Compression=lzma2/normal
 SolidCompression=yes
 PrivilegesRequired=lowest
-SetupIconFile=Luwrain\anatomy.ico
-UninstallDisplayIcon={app}\anatomy.ico
-UninstallDisplayName=Невизуальная анатомия
+SetupIconFile=Luwrain\tsulib.ico
+UninstallDisplayIcon={app}\tsulib.ico
+UninstallDisplayName=Научная библиотека ТГУ
 WizardImageStretch=No
 WizardSmallImageFile=setup-icon.bmp
 ArchitecturesInstallIn64BitMode=x64
 
 [Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
+Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Files]
-Source: "Luwrain\anatomy.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Luwrain\tsulib.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\Невизуальная анатомия"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\anatomy.exe"; IconFilename: "{app}\reader.ico"; Check: returnTrue()
-Name: "{commondesktop}\Невизуальная анатомия"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\anatomy.exe"; IconFilename: "{app}\reader.ico"; Check: returnFalse()
+Name: "{group}\Научная библиотека ТГУ"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\tsulib.exe"; IconFilename: "{app}\reader.ico"; Check: returnTrue()
+Name: "{commondesktop}\Научная библиотека ТГУ"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\tsulib.exe"; IconFilename: "{app}\reader.ico"; Check: returnFalse()
 
 [Run]
-Filename: "{code:GetDefaultDir}\anatomy.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
-Filename: "{code:GetDefaultDir}\anatomy.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
-Filename: "{code:GetDefaultDir}\anatomy.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""reader"" -mainExe ""anatomy.exe""  "; Check: returnFalse()
+Filename: "{code:GetDefaultDir}\tsulib.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
+Filename: "{code:GetDefaultDir}\tsulib.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
+Filename: "{code:GetDefaultDir}\tsulib.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""reader"" -mainExe ""tsulib.exe""  "; Check: returnFalse()
 
 [UninstallRun]
-;Filename: "{code:GetDefaultDir}\anatomy.exe "; Parameters: "-uninstall -svcName Luwrain -stopOnUninstall"; Check: returnFalse()
+;Filename: "{code:GetDefaultDir}\tsulib.exe "; Parameters: "-uninstall -svcName Luwrain -stopOnUninstall"; Check: returnFalse()
 
 [Code]
 const
