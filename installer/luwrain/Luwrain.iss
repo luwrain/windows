@@ -31,7 +31,7 @@ SetupIconFile=Luwrain\Luwrain.ico
 UninstallDisplayIcon={app}\Luwrain.ico
 UninstallDisplayName=Luwrain
 WizardImageStretch=No
-WizardSmallImageFile=Luwrain-setup-icon.bmp
+WizardSmallImageFile=setup-icon.bmp
 ArchitecturesInstallIn64BitMode=
 
 
