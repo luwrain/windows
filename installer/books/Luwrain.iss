@@ -1,13 +1,13 @@
 
 [Setup]
-AppId={{org.luwrain.reader}}
-AppName=LUWRAIN Reader
+AppId={{org.luwrain.books}}
+AppName=LUWRAIN Books
 AppVersion=LUWRAIN_VERSION
-AppVerName=LUWRAIN Reader LUWRAIN_VERSION
+AppVerName=LUWRAIN Books LUWRAIN_VERSION
 AppPublisher=The LUWRAIN Project
-AppComments=A books reader for the blind supporting DAISY and other formats
+AppComments=Невизуальное приложение для работы с сервисом для создания аудиокниг LUWRAIN Books
 AppCopyright=Copyright (C) 2012-2021 The LUWRAIN Project
-AppPublisherURL=http://luwrain.org
+AppPublisherURL=https://books.luwrain.org
 ;AppSupportURL=http://java.com/
 ;AppUpdatesURL=http://java.com/
 ;{localappdata}\Luwrain
@@ -18,40 +18,40 @@ DisableProgramGroupPage=Yes
 DisableReadyPage=Yes
 DisableFinishedPage=Yes
 DisableWelcomePage=Yes
-DefaultGroupName=LUWRAIN Reader
+DefaultGroupName=LUWRAIN Books
 ;Optional License
 LicenseFile=
 ;WinXP or above
 MinVersion=0,5.1 
-OutputBaseFilename=Luwrain-LUWRAIN_VERSION
+OutputBaseFilename=Luwrain-books-LUWRAIN_VERSION
 Compression=lzma2/normal
 SolidCompression=yes
 PrivilegesRequired=lowest
-SetupIconFile=Luwrain\reader.ico
-UninstallDisplayIcon={app}\reader.ico
-UninstallDisplayName=LUWRAIN Reader
+SetupIconFile=Luwrain\books.ico
+UninstallDisplayIcon={app}\books.ico
+UninstallDisplayName=LUWRAIN Books
 WizardImageStretch=No
 WizardSmallImageFile=setup-icon.bmp
 ArchitecturesInstallIn64BitMode=x64
 
 [Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
+Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Files]
-Source: "Luwrain\reader.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Luwrain\books.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\LUWRAIN Reader"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\reader.exe"; IconFilename: "{app}\reader.ico"; Check: returnTrue()
-Name: "{commondesktop}\LUWRAIN Reader"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\reader.exe"; IconFilename: "{app}\reader.ico"; Check: returnFalse()
+Name: "{group}\LUWRAIN Books"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\books.exe"; IconFilename: "{app}\books.ico"; Check: returnTrue()
+Name: "{commondesktop}\LUWRAIN Books"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\books.exe"; IconFilename: "{app}\books.ico"; Check: returnFalse()
 
 [Run]
-Filename: "{code:GetDefaultDir}\reader.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
-Filename: "{code:GetDefaultDir}\reader.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
-Filename: "{code:GetDefaultDir}\reader.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""reader"" -mainExe ""reader.exe""  "; Check: returnFalse()
+Filename: "{code:GetDefaultDir}\books.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
+Filename: "{code:GetDefaultDir}\books.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
+Filename: "{code:GetDefaultDir}\books.exe"; Parameters: "-install -svcName ""LUWRAIN"" -svcDesc ""books"" -mainExe ""books.exe""  "; Check: returnFalse()
 
 [UninstallRun]
-;Filename: "{code:GetDefaultDir}\reader.exe "; Parameters: "-uninstall -svcName Luwrain -stopOnUninstall"; Check: returnFalse()
+;Filename: "{code:GetDefaultDir}\books.exe "; Parameters: "-uninstall -svcName Luwrain -stopOnUninstall"; Check: returnFalse()
 
 [Code]
 const
@@ -86,8 +86,8 @@ end;
 
 function GetDefaultDir(def: string): string;
 begin
-    // {localappdata}\LuwrainReader
-    Result := GetShortName(GetEnv('localappdata')+'\LuwrainReader');
+    // {localappdata}\LuwrainBooks
+    Result := GetShortName(GetEnv('localappdata')+'\LuwrainBooks');
 end;
 
 function InitializeSetup(): Boolean;
