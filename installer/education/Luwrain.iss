@@ -2,8 +2,8 @@
 [Setup]
 AppId={{org.luwrain.education}}
 AppName=LUWRAIN для образования
-AppVersion=0.1.0
-AppVerName=LUWRAIN для образования 0.1.0
+AppVersion=LUWRAIN_VERSION
+AppVerName=LUWRAIN для образования LUWRAIN_VERSION
 AppPublisher=LUWRAIN
 AppComments=Комплект невизуальных образовательных приложений
 AppCopyright=Copyright (C) 2021 LUWRAIN
@@ -23,7 +23,7 @@ DefaultGroupName=LUWRAIN для образования
 LicenseFile=
 ;WinXP or above
 MinVersion=0,5.1 
-OutputBaseFilename=lwreducation-0.1.0
+OutputBaseFilename=luwrain-education-LUWRAIN_VERSION
 Compression=lzma2/normal
 SolidCompression=yes
 PrivilegesRequired=lowest
