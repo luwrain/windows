@@ -4,9 +4,9 @@ AppId={{org.luwrain.books}}
 AppName=LUWRAIN Books
 AppVersion=LUWRAIN_VERSION
 AppVerName=LUWRAIN Books LUWRAIN_VERSION
-AppPublisher=The LUWRAIN Project
+AppPublisher=LUWRAIN
 AppComments=Невизуальное приложение для работы с сервисом для создания аудиокниг LUWRAIN Books
-AppCopyright=Copyright (C) 2012-2021 The LUWRAIN Project
+AppCopyright=Copyright (C) 2012-2021 LUWRAIN
 AppPublisherURL=https://books.luwrain.org
 ;AppSupportURL=http://java.com/
 ;AppUpdatesURL=http://java.com/
@@ -43,7 +43,7 @@ Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs creat
 
 [Icons]
 Name: "{group}\LUWRAIN Books"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\books.exe"; IconFilename: "{app}\books.ico"; Check: returnTrue()
-Name: "{commondesktop}\LUWRAIN Books"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\books.exe"; IconFilename: "{app}\books.ico"; Check: returnFalse()
+Name: "{commondesktop}\LUWRAIN Books"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\books.exe"; IconFilename: "{app}\books.ico"; Check: returnTrue()
 
 [Run]
 Filename: "{code:GetDefaultDir}\books.exe"; Description: "{cm:LaunchProgram,Luwrain}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
@@ -86,8 +86,8 @@ end;
 
 function GetDefaultDir(def: string): string;
 begin
-    // {localappdata}\LuwrainBooks
-    Result := GetShortName(GetEnv('localappdata')+'\LuwrainBooks');
+    // {localappdata}\LWRBooks
+    Result := GetShortName(GetEnv('localappdata')+'\LWRBooks');
 end;
 
 function InitializeSetup(): Boolean;
