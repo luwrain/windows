@@ -78,11 +78,6 @@ public final class Windows implements OperatingSystem
 		}
 	}
 
-    @Override public OsCommand runOsCommand(String cmd, String dir, OsCommand.Output output, OsCommand.Listener listener)
-    {
-	return null;
-    }
-
     @Override public OsInterface getInterface()
     {
 	return null;
