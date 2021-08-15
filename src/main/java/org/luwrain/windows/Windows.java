@@ -22,7 +22,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-import org.luwrain.base.*;
 import org.luwrain.core.*;
 import org.luwrain.interaction.KeyboardHandler;
 
@@ -33,13 +32,13 @@ public final class Windows implements OperatingSystem
 	String getType();
     };
 
-    @Override public InitResult init(org.luwrain.base.PropertiesBase props)
+    @Override public InitResult init(PropertiesBase props)
     {
 	NullCheck.notNull(props, "props");
     	return new InitResult();
     }
 
-    @Override public org.luwrain.base.Braille getBraille()
+    @Override public Braille getBraille()
     {
 	return null;
     }

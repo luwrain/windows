@@ -20,10 +20,10 @@ package org.luwrain.windows;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import org.luwrain.core.*;
 import org.luwrain.core.events.InputEvent;
 import org.luwrain.core.events.InputEvent.Special;
 import org.luwrain.interaction.KeyboardHandler;
-import org.luwrain.base.EventConsumer;
 
 @SuppressWarnings({"deprecation","restriction"}) 
 class KeyboardJavafxHandler implements KeyboardHandler
