@@ -1,13 +1,13 @@
 
 [Setup]
-AppId={{ru.tsu.lib.app}}
+AppId={{org.luwrain.tsulib}}
 AppName=Научная библиотека ТГУ
 AppVersion=LUWRAIN_VERSION
 AppVerName=Научная библиотека ТГУ LUWRAIN_VERSION
 AppPublisher=Национальный исследовательский Томский государственный университет
 AppComments=Невизуальное приложение для работы с каталогом научной библиотеки ТГУ
-AppCopyright=Copyright (C) 2018-2021 Национальный исследовательский Томский государственный университет
-AppPublisherURL=http://luwrain.org
+AppCopyright=Copyright (C) 2018-2021 Томский государственный университет
+AppPublisherURL=http://lib.tsu.ru
 ;AppSupportURL=http://java.com/
 ;AppUpdatesURL=http://java.com/
 ;{localappdata}\Luwrain
@@ -43,7 +43,7 @@ Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs creat
 
 [Icons]
 Name: "{group}\Научная библиотека ТГУ"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\tsulib.exe"; IconFilename: "{app}\tsulib.ico"; Check: returnTrue()
-Name: "{commondesktop}\Научная библиотека ТГУ"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\tsulib.exe"; IconFilename: "{app}\tsulib.ico"; Check: returnFalse()
+Name: "{commondesktop}\Научная библиотека ТГУ"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\tsulib.exe"; IconFilename: "{app}\tsulib.ico"; Check: returnTrue()
 
 [Run]
 Filename: "{code:GetDefaultDir}\tsulib.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()

@@ -1,12 +1,12 @@
 
 [Setup]
 AppId={{org.luwrain.dm}}
-AppName=Директ-Медиа Чтение вслух
-AppVersion=0.1.0
-AppVerName=Директ-Медиа Чтение вслух 0.1.0
+AppName=Директ-Медиа
+AppVersion=0.2.0
+AppVerName=Директ-Медиа 0.2.0
 AppPublisher=Директ-Медиа
 AppComments=Невизуальное приложение для работы с ЭБС ДИрект-Медиа
-AppCopyright=Copyright (C) 2021 Direct-Media
+AppCopyright=Copyright (C) 2021 Директ-Медиа
 AppPublisherURL=http://directmedia.ru
 ;AppSupportURL=http://java.com/
 ;AppUpdatesURL=http://java.com/
@@ -23,7 +23,7 @@ DefaultGroupName=директ-Медиа
 LicenseFile=
 ;WinXP or above
 MinVersion=0,5.1 
-OutputBaseFilename=dm-0.1.0
+OutputBaseFilename=dm-0.2.0
 Compression=lzma2/normal
 SolidCompression=yes
 PrivilegesRequired=lowest
@@ -42,8 +42,8 @@ Source: "Luwrain\dm.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\Чтение вслух"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\dm.exe"; IconFilename: "{app}\dm.ico"; Check: returnTrue()
-Name: "{commondesktop}\директ-Медиа"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\dm.exe"; IconFilename: "{app}\dm.ico"; Check: returnFalse()
+Name: "{group}\Директ-Медиа"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\dm.exe"; IconFilename: "{app}\dm.ico"; Check: returnTrue()
+Name: "{commondesktop}\директ-Медиа"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\dm.exe"; IconFilename: "{app}\dm.ico"; Check: returnTrue()
 
 [Run]
 Filename: "{code:GetDefaultDir}\dm.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
