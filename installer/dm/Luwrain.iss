@@ -1,11 +1,11 @@
 
 [Setup]
 AppId={{org.luwrain.dm}}
-AppName=Директ-Медиа
-AppVersion=0.2.0
-AppVerName=Директ-Медиа 0.2.0
+AppName=Университетская библиотека онлайн
+AppVersion=0.5.0
+AppVerName=Университетская библиотека онлайн 0.5.0
 AppPublisher=Директ-Медиа
-AppComments=Невизуальное приложение для работы с ЭБС ДИрект-Медиа
+AppComments=Невизуальное приложение для работы с ЭБС "Университетская библиотека онлайн"
 AppCopyright=Copyright (C) 2021 Директ-Медиа
 AppPublisherURL=http://directmedia.ru
 ;AppSupportURL=http://java.com/
@@ -23,13 +23,13 @@ DefaultGroupName=директ-Медиа
 LicenseFile=
 ;WinXP or above
 MinVersion=0,5.1 
-OutputBaseFilename=dm-0.2.0
+OutputBaseFilename=dm-0.5.0
 Compression=lzma2/normal
 SolidCompression=yes
 PrivilegesRequired=lowest
 SetupIconFile=Luwrain\dm.ico
 UninstallDisplayIcon={app}\dm.ico
-UninstallDisplayName=Директ-Медиа
+UninstallDisplayName=Университетская библиотека онлайн
 WizardImageStretch=No
 WizardSmallImageFile=setup-icon.bmp
 ArchitecturesInstallIn64BitMode=x64
@@ -42,8 +42,8 @@ Source: "Luwrain\dm.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\Директ-Медиа"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\dm.exe"; IconFilename: "{app}\dm.ico"; Check: returnTrue()
-Name: "{commondesktop}\директ-Медиа"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\dm.exe"; IconFilename: "{app}\dm.ico"; Check: returnTrue()
+Name: "{group}\Университетская библиотека онлайн"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\dm.exe"; IconFilename: "{app}\dm.ico"; Check: returnTrue()
+Name: "{commondesktop}\Университетская библиотека онлайн"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\dm.exe"; IconFilename: "{app}\dm.ico"; Check: returnTrue()
 
 [Run]
 Filename: "{code:GetDefaultDir}\dm.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
