@@ -77,8 +77,4 @@ public final class Windows implements OperatingSystem
 		}
 	}
 
-    @Override public OsInterface getInterface()
-    {
-	return null;
-    }
 }
