@@ -44,7 +44,7 @@ Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs creat
 
 [Icons]
 Name: "{group}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; IconFilename: "{app}\Luwrain.ico"; Check: returnTrue()
-Name: "{commondesktop}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; IconFilename: "{app}\Luwrain.ico"; Check: returnFalse()
+Name: "{commondesktop}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; IconFilename: "{app}\Luwrain.ico"; Check: returnTrue()
 
 
 [Run]
