@@ -39,6 +39,16 @@
             <manifest>
               <addClasspath>true</addClasspath>
             </manifest>
+	    <manifestSections>
+              <manifestSection>
+                <name>org/luwrain</name>
+                <manifestEntries>
+                  <Extensions>org.luwrain.windows.Extension</Extensions>
+                </manifestEntries>
+              </manifestSection>
+            </manifestSections>
+
+	    
           </archive>
         </configuration>
       </plugin>

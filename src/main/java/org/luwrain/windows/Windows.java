@@ -32,6 +32,11 @@ public final class Windows implements OperatingSystem
 	String getType();
     };
 
+    @Override public String escapeString(String style, String str)
+    {
+	return str;
+    }
+
     @Override public InitResult init(PropertiesBase props)
     {
 	NullCheck.notNull(props, "props");
