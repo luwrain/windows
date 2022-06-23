@@ -31,9 +31,13 @@ public final class DefaultDisksPopupFactory implements DisksPopup.Factory
 
 private final class DisksImpl implements DisksPopup.Disks
 	{
-	    @Override public DisksPopup.Disk[] getDisks()
+	    @Override public DisksPopup.Disk[] getDisks(Set<DisksPopup.Flags> flags)
 	    {
 		final List<DiskImpl> res = new ArrayList<>();
+		final File[] roots = File.listRoots();
+		if (roots != null)
+		for(File f: roots)
+		    res.add(new DiskImpl(f.getAbsolutePath()));
 		return res.toArray(new DisksPopup.Disk[res.size()]);
 	    }
 	}
@@ -51,9 +55,13 @@ private final class DisksImpl implements DisksPopup.Disks
 	    {
 		return true;
 	    }
-	    @Override public File activate()
+	    @Override public File activate(Set<DisksPopup.Flags> flags)
 	    {
 		return new File(path);
+	    }
+	    	    @Override public boolean deactivate(Set<DisksPopup.Flags> flags)
+	    {
+		return true;
 	    }
 	    @Override public String toString()
 	    {
