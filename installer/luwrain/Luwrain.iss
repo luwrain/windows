@@ -6,7 +6,7 @@ AppVersion=LUWRAIN_VERSION
 AppVerName=LUWRAIN LUWRAIN_VERSION
 AppPublisher=The LUWRAIN Project
 AppComments=A platform for the creation of apps for the blind and partially-sighted
-AppCopyright=Copyright (C) 2012-2021 The LUWRAIN Project
+AppCopyright=Copyright (C) 2012-2022 The LUWRAIN Project
 AppPublisherURL=http://luwrain.org
 ;AppSupportURL=http://java.com/
 ;AppUpdatesURL=http://java.com/
@@ -43,9 +43,8 @@ Source: "Luwrain\Luwrain.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; IconFilename: "{app}\Luwrain.ico"; Check: returnTrue()
-Name: "{commondesktop}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; IconFilename: "{app}\Luwrain.ico"; Check: returnTrue()
-
+Name: "{group}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; WorkingDir: "{code:GetDefaultDir}"; IconFilename: "{app}\Luwrain.ico"; Check: returnTrue()
+Name: "{commondesktop}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; WorkingDir: "{code:GetDefaultDir}"; IconFilename: "{app}\Luwrain.ico"; Check: returnTrue()
 
 [Run]
 Filename: "{code:GetDefaultDir}\Luwrain.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
