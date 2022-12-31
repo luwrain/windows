@@ -63,6 +63,12 @@ private final class DisksImpl implements DisksPopup.Disks
 	    {
 		return true;
 	    }
+	    	    	    @Override public boolean poweroff(Set<DisksPopup.Flags> flags)
+	    {
+		return true;
+	    }
+
+	    
 	    @Override public String toString()
 	    {
 		return title;
