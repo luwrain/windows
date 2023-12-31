@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- Translators: Replace the lang attribute value with the target language code according to ISO 639. See https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JAWS Settings for LUWRAIN Application</title>
+<link rel="stylesheet" type="text/css" media="screen" href="style.css">
+</head>
+<body>
+<h1>JAWS Settings for LUWRAIN Application</h1>
+<p>Application settings that automatically enable JAWS sleep mode in a window of LUWRAIN self-voicing application.</p>
+<h2>Peculiarities</h2>
+<ul>
+<li>In the LUWRAIN application window, sleep mode of JAWS is enabled  with unloading the synthesizer.</li>
+<li>Braille sleep mode of JAWS does not enable, so the braille display keyboard can be used to enter commands and data in the LUWRAIN application window.</li>
+<li>The settings are independent of the JAWS language and can therefore be used with any JAWS localization.</li>
+<li>The settings support the LUWRAIN application running with both the embedded and locally installed JRE. However, to support a locally installed JRE, it may be necessary to rename the application settings file first. For more information, see "<a href="#options">LUWRAIN run Options Support</a>".</li>
+</ul>
+<h2>Installation</h2>
+<p>The application settings can be added to JAWS manually or automatically.</p>
+<p>To add the application settings manually follow these steps:</p>
+<ol>
+<li>Open the JAWS user settings directory. To do this:
+<ol type="A">
+<li>Open the Windows Start menu.</li>
+<li>Move to the "All Programs" submenu and open it.</li>
+<li>Move to the group of used version JAWS and open it.</li>
+<li>Move to the "Explore JAWS" group and open it.</li>
+<li>Move to "Explore My Settings" item and activate it.</li>
+</ol>
+Windows Explorer opens with a list of files and folders (for the current user) containing user settings of JAWS.</li>
+<li>Copy all luwrain*.JCF files in this package to the JAWS user settings directory.</li>
+</ol>
+<p>The luwrain.JCF file is for the LUWRAIN application running with the embedded JRE, and the remaining luwrain*.JCF files are for the LUWRAIN application running with the locally installed JRE. However, to support a locally installed JRE, it may be necessary to rename the application settings file first. For more information, see "<a href="#options">LUWRAIN run Options Support</a>".</p>
+<p>To add the application settings automatically run the install.vbs script (or one of the script localizers, for example, Russian install_ru.vbs, for installation with messages in the appropriate language). The script will add the application settings to all JAWS versions detected on the system and for all JAWS localization languages.</p>
+<p>The automatic installation script is compatible with both windows based and console based script host. For greater automate the installation process without blocking dialog boxes, the main script (or any script localizer) can be run using the CScript script host, for example, with commands:
+<blockquote><pre><code>CScript install.vbs //Nologo
+CScript install_ru.vbs //Nologo //U</code></pre></blockquote></p>
+<h2 id="options">LUWRAIN run Options Support</h2>
+<p>The LUWRAIN application can be run in two ways:</p>
+<ol>
+<li>Running LUWRAIN with the embedded JRE: The recommended default option, which runs luwrain.exe via a shortcut or by directly running the executable file. The settings from the luwrain.JCF file are intended for this run option.</li>
+<li>Running LUWRAIN with the locally installed JRE: An option for special needs and advanced users, which an executable JAR file is run using a separately Java Runtime Environment, for example, with a command:
+<blockquote><pre><code>javaw -jar jar\luwrain-base.jar</code></pre></blockquote>
+The settings from the luwrain-base.JCF file are intended for this run option.<br>
+The name of the executable JAR file with the main class may change in different builds of LUWRAIN, so it is necessary to rename the settings file accordingly before installing it. If necessary, you can create several additional settings files (the automatic installation script copies them with wildcards as luwrain*.JCF).</li>
+</ol>
+<h2>Links</h2>
+<ul>
+<li><a href="https://luwrain.org/?lang=en" target="_blank">LUWRAIN platform page</a></li>
+<li><a href="https://www.freedomscientific.com/products/software/jaws/" target="_blank">JAWS screen reader page</a></li>
+<li><a href="https://github.com/luwrain/windows" target="_blank">Repository of the Windows-dependent part of LUWRAIN with this package</a>
+<blockquote><pre><code>git clone https://github.com/luwrain/windows.git
+cd windows/jaws</code></pre></blockquote></li>
+</ul>
+</body>
+</html>
