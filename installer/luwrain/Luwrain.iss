@@ -22,8 +22,8 @@ DefaultGroupName=LUWRAIN
 ;Optional License
 LicenseFile=
 ;WinXP or above
-MinVersion=0,5.1 
-OutputBaseFilename=Luwrain-1.0
+MinVersion=0,6.1 
+OutputBaseFilename=luwrain
 Compression=lzma2/normal
 SolidCompression=yes
 PrivilegesRequired=lowest
@@ -44,7 +44,7 @@ Source: "Luwrain\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs creat
 
 [Icons]
 Name: "{group}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; WorkingDir: "{code:GetDefaultDir}"; IconFilename: "{app}\Luwrain.ico"; Check: returnTrue()
-Name: "{commondesktop}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; WorkingDir: "{code:GetDefaultDir}"; IconFilename: "{app}\Luwrain.ico"; Check: returnTrue()
+Name: "{autodesktop}\Luwrain"; Filename: "%ComSpec%"; Parameters: "/c start {code:GetDefaultDir}\Luwrain.exe"; WorkingDir: "{code:GetDefaultDir}"; IconFilename: "{app}\Luwrain.ico"; Check: returnTrue()
 
 [Run]
 Filename: "{code:GetDefaultDir}\Luwrain.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
